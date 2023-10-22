@@ -1,26 +1,15 @@
 "use client";
 
 import { useEffect } from "react";
-import { v4 as uuidv4 } from "uuid";
 import { useFunnelStore } from "@/app/store";
 import FileLoader from "@/app/components/FileLoader";
-
-import { FunnelProcessor } from "./services/funnel-processor";
 
 export default function Home() {
   const store = useFunnelStore();
 
   const handleFileUpload = (files: File[]) => {
-    const funnelProcesor = FunnelProcessor();
-
     files.forEach(async (file) => {
-      try {
-        const { data: funnel } = await funnelProcesor.readFunnelFromFile(file);
-        const id = uuidv4();
-        store.addFunnel({ ...funnel, id });
-      } catch (error) {
-        console.error(`Error processing file ${file.name}:`, error);
-      }
+      await store.addFunnelFromFile(file);
     });
   };
 
