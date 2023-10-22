@@ -6,6 +6,7 @@ type FunnelPageParams = {
 }
 import { useFunnelStore } from "@/app/store";
 import CodeEditor from '@/app/components/CodeEditor';
+import { FunnelPagePreview } from './components/FunnelPreview';
 
 export default function FunnelPage({ params }: { params: FunnelPageParams }) {
 	const { id } = params;
@@ -21,7 +22,7 @@ export default function FunnelPage({ params }: { params: FunnelPageParams }) {
     <>
       <section>
         <h1>Hello funnel {funnel.name}</h1>
-        <p>preview will be here</p>
+        <FunnelPagePreview {...funnel.pages[0]} />
       </section>
 			<aside>
     	  <CodeEditor code={JSON.stringify(funnel, undefined, 2)} language="json" />
