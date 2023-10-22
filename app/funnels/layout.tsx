@@ -1,3 +1,5 @@
+import AppBar from "@/app/components/AppBar";
+
 export default function FunnelsLayout({
   children,
 }: {
@@ -5,7 +7,7 @@ export default function FunnelsLayout({
 }) {
   return (
     <>
-      <nav>Upper nav will be here</nav>
+      <AppBar />
 			<main className="h-full flex">
 				{children}
 			</main>
