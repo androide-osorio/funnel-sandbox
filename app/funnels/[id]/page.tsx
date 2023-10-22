@@ -1,19 +1,31 @@
+'use client'
 import React from 'react';
 
 type FunnelPageParams = {
 	id: string;
 }
+import { useFunnelStore } from "@/app/store";
+import CodeEditor from '@/app/components/CodeEditor';
 
 export default function FunnelPage({ params }: { params: FunnelPageParams }) {
-  return (
-		<>
-			<section>
-				<h1>Hello funnel {params.id}</h1>
-				<p>preview will be here</p>
-			</section>
+	const { id } = params;
+	const funnel = useFunnelStore((state) =>
+    state.funnels.find((f) => f.id === id)
+  );
+
+	if (!funnel) {
+		return <div>Funnel not found</div>;
+	}
+
+	return (
+    <>
+      <section>
+        <h1>Hello funnel {funnel.name}</h1>
+        <p>preview will be here</p>
+      </section>
 			<aside>
-				funnel code will be here
+    	  <CodeEditor code={JSON.stringify(funnel, undefined, 2)} language="json" />
 			</aside>
-		</>
-	);
+    </>
+  );
 }

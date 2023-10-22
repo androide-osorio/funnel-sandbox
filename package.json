@@ -9,14 +9,15 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@codemirror/lang-json": "^6.0.1",
     "@faker-js/faker": "^8.2.0",
     "@heroicons/react": "^2.0.18",
+    "@uiw/react-codemirror": "^4.21.20",
     "cookie": "^0.5.0",
     "next": "13.5.6",
     "react": "^18",
     "react-dom": "^18",
     "react-dropzone": "^14.2.3",
-    "react-syntax-highlighter": "^15.5.0",
     "uuid": "^9.0.1",
     "zustand": "^4.4.4"
   },
