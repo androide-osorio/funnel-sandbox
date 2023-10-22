@@ -51,7 +51,7 @@ const BLOCK_MAPPINGS: Record<string, React.ComponentType<any>> = {
 	button: ButtonComponent,
 };
 
-export function FunnelPagePreview({ blocks, bgColor = 'red' }: Props) {
+export function PagePreview({ blocks, bgColor = 'red' }: Props) {
 	const mapBlock = (block: Block) => {
 		const Component = BLOCK_MAPPINGS[block.type];
 		return <Component {...block} />;
