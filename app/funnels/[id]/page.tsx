@@ -25,7 +25,7 @@ export default function FunnelPage({ params }: { params: FunnelPageParams }) {
         <FunnelPagePreview {...funnel.pages[0]} bgColor={funnel.bgColor} />
       </section>
 			<aside>
-    	  <CodeEditor code={JSON.stringify(funnel, undefined, 2)} language="json" />
+    	  <CodeEditor code={JSON.stringify(funnel, undefined, 2)} language="json" editable={false} />
 			</aside>
     </>
   );

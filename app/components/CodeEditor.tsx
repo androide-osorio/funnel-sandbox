@@ -16,6 +16,7 @@ const CodeEditor: React.FC<CodeEditorProps> = ({ code, language, editable = fals
       height="200px"
       extensions={[json()]}
       onChange={onChange}
+      editable={editable}
     />
   );
 };
