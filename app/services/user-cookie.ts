@@ -7,11 +7,13 @@ const ENCRYPTION_KEY = "my-secret-key"; // Replace with your own secret key.
 const COOKIE_MAX_AGE = 30 * 24 * 60 * 60;
 
 type UserCookieServiceProps = {
+	cookieName: string;
   encryptionKey: string;
   maxAge: number;
 };
 
 export function UserCookieService({
+	cookieName,
   encryptionKey,
   maxAge,
 }: UserCookieServiceProps) {
@@ -28,13 +30,13 @@ export function UserCookieService({
     encrypted += cipher.final("hex");
 
     // Set the cookie with a lifespan of 30 days.
-    return serialize("userId", `${iv.toString("hex")}:${encrypted}`, {
+    return serialize(cookieName, `${iv.toString("hex")}:${encrypted}`, {
       maxAge, // 30 days in seconds
       path: "/",
     });
   };
 
-  const parse = (cookie: string): string | null => {
+  const parse = (cookie: string) => {
     const [ivHex, encrypted] = cookie.split(":");
     const iv = Buffer.from(ivHex, "hex");
     const decipher = createDecipheriv(
