@@ -5,25 +5,22 @@ import { v4 as uuidv4 } from "uuid";
 import { useFunnelStore } from "@/app/store";
 import FileLoader from "@/app/components/FileLoader";
 
-import { Funnel } from "./store/types";
+import { FunnelProcessor } from "./services/funnel-processor";
 
 export default function Home() {
   const store = useFunnelStore();
 
   const handleFileUpload = (files: File[]) => {
-    files.forEach((file) => {
-      const reader = new FileReader();
-      reader.onload = (event) => {
-        const content = event.target?.result as string;
-        try {
-          const funnel = JSON.parse(content) as Funnel;
-          const id = uuidv4();
-          store.addFunnel({ ...funnel, id });
-        } catch (error) {
-          console.error(error);
-        }
-      };
-      reader.readAsText(file);
+    const funnelProcesor = FunnelProcessor();
+
+    files.forEach(async (file) => {
+      try {
+        const { data: funnel } = await funnelProcesor.readFunnelFromFile(file);
+        const id = uuidv4();
+        store.addFunnel({ ...funnel, id });
+      } catch (error) {
+        console.error(`Error processing file ${file.name}:`, error);
+      }
     });
   };
 
