@@ -31,19 +31,19 @@ export default function FunnelPage({ params }: { params: FunnelPageParams }) {
           editable={false}
         />
       </aside>
-      <section className="col-span-2 flex flex-row justify-center items-center gap-4 bg-slate-50">
+      <section className="col-span-2 flex flex-row justify-center items-center gap-8 bg-slate-50">
         <div
-          className={`overflow-x-hidden bg-[${
-            funnel.bgColor ?? "white"
-          }] rounded-3xl shadow-xl max-w-sm`}
+          className={`overflow-x-hidden bg-${
+            `[${funnel.bgColor}]` ?? "white"
+          } rounded-3xl shadow-xl max-w-sm h-[600px]`}
         >
           <PagePreview {...page} bgColor={funnel.bgColor} />
         </div>
         <nav>
           <ol>
-            {funnel.pages.map((page) => (
+            {funnel.pages.map((page, i) => (
               <li key={`funnel-${funnelId}-page-${page.id}-link`}>
-                <a href={`/funnels/${funnel.id}/${page.id}`}>{page.id}</a>
+                <a href={`/funnels/${funnel.id}/${page.id}`}>Page {i + 1}</a>
               </li>
             ))}
           </ol>
