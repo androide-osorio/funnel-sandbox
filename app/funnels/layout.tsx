@@ -6,7 +6,7 @@ export default function FunnelsLayout({
   return (
     <>
       <nav>Upper nav will be here</nav>
-			<main>
+			<main className="h-full flex">
 				{children}
 			</main>
     </>

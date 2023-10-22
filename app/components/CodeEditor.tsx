@@ -13,7 +13,7 @@ const CodeEditor: React.FC<CodeEditorProps> = ({ code, language, editable = fals
   return (
     <CodeMirror
       value={code}
-      height="200px"
+      className="max-h-screen overflow-y-auto"
       extensions={[json()]}
       onChange={onChange}
       editable={editable}
