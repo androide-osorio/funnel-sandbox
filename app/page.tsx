@@ -21,8 +21,8 @@ export default function Home() {
 
   return (
     <>
-      <main className="flex min-h-screen flex-col items-center justify-between p-24">
-        <header className="flex flex-col gap-6 items-center">
+      <main className="flex min-h-screen flex-col items-center justify-between p-24 gap-8">
+        <header className="flex flex-col gap-3 items-center">
           <Image
             src="/perspective-logo.png"
             alt="Perspective"
@@ -30,11 +30,11 @@ export default function Home() {
             height={56}
           />
           <h1 className="text-4xl font-bold">
-            Welcome to the funnel inspector
+            Funnel inspector
           </h1>
+          <p>Please upload a funnel to preview...</p>
         </header>
         <section>
-          <p>Please upload a funnel to preview...</p>
           <FileLoader
             onFileUpload={handleFileUpload}
             accept="application/json"

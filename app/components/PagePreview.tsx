@@ -1,20 +1,20 @@
 import React from "react";
 import Image from "next/image";
 import {
-	Block,
-	ButtonBlock,
-	ImageBlock,
-	ListBlock,
-	Page,
-	TextBlock,
+  Block,
+  ButtonBlock,
+  ImageBlock,
+  ListBlock,
+  Page,
+  TextBlock,
 } from "@/app/store/types";
 
 type Props = Page & {
-	bgColor?: string;
+  bgColor?: string;
 };
 
 const TextComponent: React.FC<TextBlock> = ({ id, text, color, align }) => {
-	return (
+  return (
     <p id={id} style={{ color: color, textAlign: align }}>
       {text}
     </p>
@@ -22,11 +22,11 @@ const TextComponent: React.FC<TextBlock> = ({ id, text, color, align }) => {
 };
 
 const ImageComponent: React.FC<ImageBlock> = ({ src }) => {
-	return <img src={src} alt="image" className="rounded-lg" />;
+  return <img src={src} alt="image" className="rounded-lg" />;
 };
 
 const ListComponent: React.FC<ListBlock> = ({ id, items }) => {
-	return (
+  return (
     <ul>
       {items.map((item, i) => (
         <li
@@ -54,28 +54,35 @@ const ListComponent: React.FC<ListBlock> = ({ id, items }) => {
 };
 
 const ButtonComponent: React.FC<ButtonBlock> = ({ text, color, bgColor }) => {
-	return (
-		<button
-		style={{ backgroundColor: bgColor, color: color }}
-			className={`bg-blue-500 text-white py-4 px-4 rounded`}
-		>
-			{text}
-		</button>
-	);
+  return (
+    <button
+      style={{ backgroundColor: bgColor, color: color }}
+      className={`bg-blue-500 text-white py-4 px-4 rounded`}
+    >
+      {text}
+    </button>
+  );
 };
 
 const BLOCK_MAPPINGS: Record<string, React.ComponentType<any>> = {
-	text: TextComponent,
-	image: ImageComponent,
-	list: ListComponent,
-	button: ButtonComponent,
+  text: TextComponent,
+  image: ImageComponent,
+  list: ListComponent,
+  button: ButtonComponent,
 };
 
-export function PagePreview({ blocks, bgColor = 'white' }: Props) {
-	const mapBlock = (block: Block) => {
-		const Component = BLOCK_MAPPINGS[block.type];
-		return <Component {...block} />;
-	};
+export function PagePreview({ blocks, bgColor = "white" }: Props) {
+  const mapBlock = (block: Block) => {
+    const Component = BLOCK_MAPPINGS[block.type];
+    return <Component {...block} />;
+  };
 
-	return <div className="p-12 flex flex-col gap-5 min-h-full" style={{ backgroundColor: bgColor }}>{blocks.map((block) => mapBlock(block))}</div>;
+  return (
+    <div
+      className="p-12 flex flex-col gap-5 min-h-full"
+      style={{ backgroundColor: bgColor }}
+    >
+      {blocks.map((block) => mapBlock(block))}
+    </div>
+  );
 }
