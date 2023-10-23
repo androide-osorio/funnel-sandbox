@@ -6,6 +6,7 @@ import { useFunnelStore } from "@/app/store";
 import CodeEditor from "@/app/components/CodeEditor";
 import { PagePreview } from "@/app/components/PagePreview";
 import { useSearchParams } from "next/navigation";
+import FunnelSidebar from "./components/FunnelSidebar";
 
 type FunnelPageParams = {
   funnelId: string;
@@ -27,14 +28,8 @@ export default function FunnelPage({ params }: { params: FunnelPageParams }) {
 
   return (
     <section className="grid grid-cols-3">
-      <aside className="col-span-1 height-full">
-        <CodeEditor
-          code={JSON.stringify(funnel, undefined, 2)}
-          language="json"
-          editable={false}
-        />
-      </aside>
-      <section className="col-span-2 flex flex-row justify-center items-center gap-8 bg-slate-50 dark:bg-slate-950">
+      <FunnelSidebar funnel={funnel} />
+      <section className="col-2 col-span-2 flex flex-row justify-center items-center gap-8 bg-slate-50 dark:bg-slate-950">
         <div
           className={`overflow-x-hidden bg-${
             `[${funnel.bgColor}]` ?? "white"
@@ -61,7 +56,7 @@ export default function FunnelPage({ params }: { params: FunnelPageParams }) {
             ))}
           </ol>
         </nav>
-      </section>
+      F</section>
     </section>
   );
 }
