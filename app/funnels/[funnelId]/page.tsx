@@ -27,8 +27,8 @@ export default function FunnelPage({ params }: { params: FunnelPageParams }) {
   const page = funnel.pages.find((p) => p.id === pageId) ?? funnel.pages[0];
 
   return (
-    <section className="grid grid-cols-3">
-      <FunnelSidebar funnel={funnel} />
+    <section className="grid grid-cols-3 w-full">
+      <FunnelSidebar funnel={funnel} page={page} />
       <section className="col-2 col-span-2 flex flex-row justify-center items-center gap-8 bg-slate-50 dark:bg-slate-950">
         <div
           className={`overflow-x-hidden bg-${
@@ -56,7 +56,7 @@ export default function FunnelPage({ params }: { params: FunnelPageParams }) {
             ))}
           </ol>
         </nav>
-      F</section>
+      </section>
     </section>
   );
 }

@@ -1,12 +1,15 @@
 import CodeEditor from "@/app/components/CodeEditor";
 import { Tab, Tabs } from "@/app/components/Tabs";
-import { Funnel } from "@/app/store/types";
+import { Funnel, Page } from "@/app/store/types";
 import React, { useState } from "react";
+import FunnelSummary from "./FunnelSummary";
 
 type Props = {
   funnel: Funnel;
+	page: Page;
 };
-function FunnelSidebar({ funnel }: Props) {
+
+function FunnelSidebar({ funnel, page }: Props) {
   const [currentView, setCurrentView] = useState<"blocks" | "code">("code");
 
   const handleViewChange = (view: "blocks" | "code") => {
@@ -22,6 +25,7 @@ function FunnelSidebar({ funnel }: Props) {
       {currentView === "blocks" && (
         <section>
           <h1>Blocks</h1>
+					<FunnelSummary backgroundColor={funnel.bgColor} blocks={page.blocks} />
         </section>
       )}
       {currentView === "code" && (
