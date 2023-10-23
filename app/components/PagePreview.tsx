@@ -31,7 +31,7 @@ const ListComponent: React.FC<ListBlock> = ({ id, items }) => {
       {items.map((item, i) => (
         <li
           key={`${id}-item-${i}`}
-          className="flex flex-row gap-3 py-5 px-3 mb-5 w-full rounded-md transition-transform transform-gpu hover:-translate-x-1 bg-slate-100"
+          className="flex flex-row gap-3 py-5 px-3 mb-5 w-full rounded-md transition-transform transform-gpu hover:scale-105 bg-white border border-blue-100"
         >
           <Image
             src={item.src}

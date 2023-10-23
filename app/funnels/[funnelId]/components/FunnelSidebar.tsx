@@ -17,7 +17,7 @@ function FunnelSidebar({ funnel, page }: Props) {
   };
 
   return (
-    <aside className="col-span-1 height-full">
+    <>
       <Tabs onChange={(tab) => handleViewChange(tab as "blocks" | "code")}>
         <Tab value="blocks">Blocks</Tab>
         <Tab value="code">Code</Tab>
@@ -37,7 +37,7 @@ function FunnelSidebar({ funnel, page }: Props) {
           />
         </section>
       )}
-    </aside>
+    </>
   );
 }
 

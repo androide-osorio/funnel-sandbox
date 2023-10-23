@@ -12,7 +12,7 @@ type Data = {
 type Actions = {
   addFunnel: (funnel: FunnelWithId) => void;
   removeFunnel: (funnelId: string) => void;
-  addFunnelFromFile: (file: File) => void;
+  addFunnelFromFile: (file: File) => Promise<string | null>;
 };
 
 type State = Data & Actions;
@@ -32,7 +32,7 @@ export const useFunnelStore = create<State>()(
         set((state: State) => ({
           funnels: state.funnels.filter((funnel) => funnel.id !== funnelId),
         })),
-      addFunnelFromFile: async (file: File) => {
+      addFunnelFromFile: async (file: File): Promise<string | null> => {
         const processor = FunnelProcessor();
         try {
           const { data: funnel } = await processor.readFunnelFromFile(file);

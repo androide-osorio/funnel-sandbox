@@ -2,16 +2,24 @@
 
 import { useEffect } from "react";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 
 import { useFunnelStore } from "@/app/store";
 import FileLoader from "@/app/components/FileLoader";
 
 export default function Home() {
+  const router = useRouter();
   const store = useFunnelStore();
 
   const handleFileUpload = (files: File[]) => {
-    files.forEach(async (file) => {
-      await store.addFunnelFromFile(file);
+    const newFunnels = files.map((file) => {
+      return store.addFunnelFromFile(file);
+    });
+
+    Promise.all(newFunnels).then((funnelIds) => {
+      const funnelId = funnelIds.at(-1);
+      console.log("funnelIds", funnelIds);
+      router.push(`/funnels/${funnelId}`);
     });
   };
 

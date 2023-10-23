@@ -26,14 +26,16 @@ export default function AppBar({ breadcrumb }: Props) {
   };
 
   return (
-    <header className="flex gap-4 justify-between items-center bg-white dark:bg-slate-800 px-6 py-4 sticky z-10 border-b-gray-100 dark:border-b-slate-600 border-b">
+    <header className="shadow-lg flex gap-4 justify-between items-center bg-white dark:bg-slate-800 px-6 py-4 sticky z-10 border-b-gray-100 dark:border-b-slate-600 border-b">
       <Image
         src="/perspective-logo.png"
         alt="Perspective.io"
         width={32}
         height={32}
       />
-      <Breadcrumbs path={breadcrumb} />
+      <div className="hidden md:block flex-1">
+        <Breadcrumbs path={breadcrumb} />
+      </div>
       <button
         className="rounded-lg bg-blue-500 hover:bg-blue-700 px-4 py-3 text-white flex items-center gap-2"
         onClick={handleFileSelect}
