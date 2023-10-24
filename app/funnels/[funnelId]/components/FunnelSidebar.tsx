@@ -6,7 +6,7 @@ import FunnelSummary from "./FunnelSummary";
 
 type Props = {
   funnel: Funnel;
-	page: Page;
+  page: Page;
 };
 
 function FunnelSidebar({ funnel, page }: Props) {
@@ -18,14 +18,20 @@ function FunnelSidebar({ funnel, page }: Props) {
 
   return (
     <>
-      <Tabs onChange={(tab) => handleViewChange(tab as "blocks" | "code")}>
-        <Tab value="blocks">Blocks</Tab>
-        <Tab value="code">Code</Tab>
-      </Tabs>
+      <header className="px-5">
+        <Tabs onChange={(tab) => handleViewChange(tab as "blocks" | "code")} initialValue="code">
+          <Tab value="blocks">Blocks</Tab>
+          <Tab value="code">Code</Tab>
+        </Tabs>
+      </header>
       {currentView === "blocks" && (
-        <section>
-          <h1>Blocks</h1>
-					<FunnelSummary backgroundColor={funnel.bgColor} blocks={page.blocks} />
+        <section className="px-5 py-4">
+          <FunnelSummary
+            backgroundColor={funnel.bgColor}
+            blocks={page.blocks}
+            funnelName={funnel.name}
+            funnelNumPages={funnel.pages.length}
+          />
         </section>
       )}
       {currentView === "code" && (

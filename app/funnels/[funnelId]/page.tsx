@@ -1,6 +1,6 @@
 "use client";
 import React from "react";
-import Link from "next/link";
+import { useMediaQuery } from "react-responsive";
 
 import { useFunnelStore } from "@/app/store";
 import CodeEditor from "@/app/components/CodeEditor";
@@ -17,6 +17,8 @@ export default function FunnelPage({ params }: { params: FunnelPageParams }) {
   const { funnelId } = params;
   const router = useRouter();
   const query = useSearchParams();
+  const isSmallScreen = useMediaQuery({ maxWidth: 767 });
+
   const funnel = useFunnelStore((state) =>
     state.funnels.find((f) => f.id === funnelId)
   );
@@ -30,7 +32,7 @@ export default function FunnelPage({ params }: { params: FunnelPageParams }) {
 
   const handlePageChange = (newPageId: string) => {
     router.push(`/funnels/${funnelId}?page=${newPageId}`);
-  }
+  };
 
   return (
     <section className="flex flex-col-reverse md:grid md:grid-cols-3 w-full">
@@ -38,7 +40,11 @@ export default function FunnelPage({ params }: { params: FunnelPageParams }) {
         <header className="md:hidden px-6 py-6">
           <h1 className="text-2xl text-bold">{funnel.name}</h1>
         </header>
-        <Tabs variant="vertical" onChange={handlePageChange} initialValue={pageId ?? ""}>
+        <Tabs
+          variant={isSmallScreen ? "horizontal" : "vertical"}
+          onChange={handlePageChange}
+          initialValue={pageId ?? ""}
+        >
           {funnel.pages.map((page, i) => (
             <Tab key={`funnel-${funnelId}-page-${page.id}`} value={page.id}>
               Page {i + 1}
