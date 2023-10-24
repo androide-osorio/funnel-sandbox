@@ -4,7 +4,7 @@ import Link from "next/link";
 
 import { useFunnelStore } from "@/app/store";
 import CodeEditor from "@/app/components/CodeEditor";
-import { PagePreview } from "@/app/components/PagePreview";
+import { PagePreview } from "@/app/funnels/[funnelId]/components/PagePreview";
 import { useSearchParams } from "next/navigation";
 import FunnelSidebar from "./components/FunnelSidebar";
 
