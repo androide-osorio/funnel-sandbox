@@ -6,6 +6,7 @@ import { CursorArrowRippleIcon } from "@heroicons/react/24/solid";
 
 import { Block } from "@/types";
 import { PropertyList } from "@/components/PropertyList";
+import CodeEditor from "@/components/CodeEditor";
 
 interface FunnelSummaryProps {
   backgroundColor?: string;
@@ -53,30 +54,6 @@ function FunnelSummary({
   return (
     <div className="flex flex-col gap-6">
       <PropertyList data={funnelData} />
-      {/* <dl className="py-3 grid grid-cols-2 gap-y-2">
-        <dt className="border-slate-300 dark:border-slate-600 dark:text-slate-300 py-2">
-          Name
-        </dt>
-        <dd className="text-right border-slate-300  dark:text-slate-300 dark:border-slate-600 py-2">
-          {funnelName}
-        </dd>
-        <dt className="border-t border-slate-300 dark:border-slate-600 py-2 dark:text-slate-300">
-          Pages
-        </dt>
-        <dd className="border-t text-right border-slate-300 dark:border-slate-600 py-2 dark:text-slate-300">
-          {funnelNumPages}
-        </dd>
-        <dt className="border-t border-slate-300 dark:border-slate-600 py-2 dark:text-slate-300">
-          Background Color
-        </dt>
-        <dd className="border-t text-right border-slate-300 dark:border-slate-600 py-2 flex items-center gap-1 justify-end dark:text-slate-300">
-          {backgroundColor}
-          <span
-            className="inline-block w-5 h-5 rounded"
-            style={{ backgroundColor }}
-          ></span>
-        </dd>
-      </dl> */}
 
       <section>
         <h3 className="text-xl font-medium mb-3">Blocks</h3>
@@ -84,14 +61,16 @@ function FunnelSummary({
           {blocks.map((block) => (
             <li
               key={block.id}
-              className="py-3 px-6 bg-slate-200 dark:bg-slate-700 rounded-lg"
+              className="py-3 px-6 bg-slate-100 hover:bg-slate-200 dark:bg-slate-700 dark:hover:bg-slate-600 rounded-lg transition transition-gpu cursor-pointer"
             >
               <details>
                 <summary className="flex gap-2">
                   {iconForBlock(block)}
                   <h4 className="capitalize">{block.type}</h4>
                 </summary>
-                <pre>{JSON.stringify(block, undefined, 2)}</pre>
+                <div className="-mr-6 mt-3">
+                  <CodeEditor code={JSON.stringify(block, undefined, 2)} language="json" />
+                </div>
               </details>
             </li>
           ))}
