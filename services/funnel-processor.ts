@@ -1,4 +1,4 @@
-import { Funnel } from "../store/types";
+import { Funnel } from "@/types";
 
 export type ParsedFunnel = {
   name: string;

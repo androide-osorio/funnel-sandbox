@@ -1,5 +1,5 @@
 import React from "react";
-import { Block, Page } from "@/typess";
+import { Block, Page } from "@/types";
 import {
   ButtonBlock,
   ImageBlock,

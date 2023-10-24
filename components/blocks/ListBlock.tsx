@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { ListBlock, ListItem as ListItemBlockType } from "@/typess";
+import { ListBlock, ListItem as ListItemBlockType } from "@/types";
 
 type ListProps = Omit<ListBlock, "type">;
 
