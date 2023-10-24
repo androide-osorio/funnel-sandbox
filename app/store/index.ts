@@ -3,7 +3,7 @@ import { persist, PersistOptions } from "zustand/middleware";
 import { v4 as uuidv4 } from "uuid";
 
 import { FunnelWithId } from "./types";
-import { FunnelProcessor } from "@/app/services/funnel-processor";
+import { FunnelProcessor, FunnelProcessorErrors, ParsedFunnel } from "@/app/services/funnel-processor";
 
 type Data = {
   funnels: FunnelWithId[];
@@ -12,7 +12,7 @@ type Data = {
 type Actions = {
   addFunnel: (funnel: FunnelWithId) => void;
   removeFunnel: (funnelId: string) => void;
-  addFunnelFromFile: (file: File) => Promise<string | null>;
+  addFunnelFromFile: (file: File) => Promise<string | FunnelProcessorErrors>;
 };
 
 type State = Data & Actions;
@@ -32,18 +32,18 @@ export const useFunnelStore = create<State>()(
         set((state: State) => ({
           funnels: state.funnels.filter((funnel) => funnel.id !== funnelId),
         })),
-      addFunnelFromFile: async (file: File): Promise<string | null> => {
+      addFunnelFromFile: async (file: File): Promise<string | FunnelProcessorErrors> => {
         const processor = FunnelProcessor();
         try {
-          const { data: funnel } = await processor.readFunnelFromFile(file);
+          const result = await processor.readFunnelFromFile(file);
+          const funnel = (result as ParsedFunnel).data;
           const id = uuidv4();
           set((state: State) => ({
             funnels: [...state.funnels, { ...funnel, id }],
           }));
           return id;
         } catch (error) {
-          console.error(`Error processing file ${file.name}:`, error);
-          return null;
+          throw error as FunnelProcessorErrors;
         }
       },
     }),

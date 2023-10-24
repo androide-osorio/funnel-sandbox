@@ -1,17 +1,21 @@
-import { Funnel, FunnelWithId } from "../store/types";
+import { Funnel } from "../store/types";
 
-interface ParsedFunnel {
+export type ParsedFunnel = {
   name: string;
   data: Funnel;
 }
 
 type FunnelProcessor = {
-  readFunnelFromFile(file: File): Promise<ParsedFunnel>;
-  writeFunnelToFile(json: FunnelWithId): Promise<File>;
+  readFunnelFromFile(file: File): Promise<ParsedFunnel | FunnelProcessorErrors>;
 };
 
+export enum FunnelProcessorErrors {
+  FILE_READ_ERROR,
+  FILE_PARSE_ERROR,
+}
+
 export function FunnelProcessor(): FunnelProcessor {
-  async function readFunnelFromFile(file: File): Promise<ParsedFunnel> {
+  async function readFunnelFromFile(file: File): Promise<ParsedFunnel | FunnelProcessorErrors> {
     return new Promise((resolve, reject) => {
       const reader = new FileReader();
 
@@ -24,29 +28,19 @@ export function FunnelProcessor(): FunnelProcessor {
           };
           resolve(parsedFile);
         } catch (error) {
-          reject(error);
+          reject(FunnelProcessorErrors.FILE_PARSE_ERROR);
         }
       };
 
       reader.onerror = () => {
-        reject(reader.error);
+        reject(FunnelProcessorErrors.FILE_READ_ERROR);
       };
 
       reader.readAsText(file);
     });
   }
 
-  async function writeFunnelToFile(funnel: Funnel): Promise<File> {
-    const blob = new Blob([JSON.stringify(funnel)], {
-      type: "application/json",
-    });
-    return new File([blob], `${funnel.name}.json`, {
-      type: "application/json",
-    });
-  }
-
   return {
     readFunnelFromFile,
-    writeFunnelToFile,
   };
 }

@@ -1,26 +1,40 @@
 "use client";
 
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 
 import { useFunnelStore } from "@/app/store";
 import FileLoader from "@/app/components/FileLoader";
+import { FunnelProcessorErrors } from "./services/funnel-processor";
+import { Alert } from "./components/Alert";
+
+function getErrorText(error: FunnelProcessorErrors) {
+  switch(error) {
+    case FunnelProcessorErrors.FILE_PARSE_ERROR:
+      return "Please upload a valid funnel file. It should be a .json file with valid JSON code.";
+    case FunnelProcessorErrors.FILE_READ_ERROR:
+      return "We don't have permission to read the file you uploaded. Please try again.";
+    default:
+      return "An unknown error occurred.";
+  }
+}
 
 export default function Home() {
   const router = useRouter();
   const store = useFunnelStore();
+  const [error, setError] = useState<FunnelProcessorErrors | null>(null);
 
-  const handleFileUpload = (files: File[]) => {
-    const newFunnels = files.map((file) => {
-      return store.addFunnelFromFile(file);
-    });
+  const handleFileUpload = async (files: File[]) => {
+    const file = files[0];
 
-    Promise.all(newFunnels).then((funnelIds) => {
-      const funnelId = funnelIds.at(-1);
-      console.log("funnelIds", funnelIds);
+    try {
+      const funnelId = await store.addFunnelFromFile(file);
+      console.log("NEW FUNNEL ADDED:", funnelId);
       router.push(`/funnels/${funnelId}`);
-    });
+    } catch (error) {
+      setError(error as FunnelProcessorErrors);
+    }
   };
 
   useEffect(() => {
@@ -42,6 +56,9 @@ export default function Home() {
           </h1>
           <p>Please upload a funnel to preview...</p>
         </header>
+        {error && (
+          <Alert title="Oops!" text={getErrorText(error)} />
+        )}
         <section>
           <FileLoader
             onFileUpload={handleFileUpload}
