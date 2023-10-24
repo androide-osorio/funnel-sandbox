@@ -20,7 +20,7 @@ export function ListItemBlock({ src, title, description }: ListItemProps) {
       )}
       <div>
         <h3 className="text-lg font-medium text-gray-800 text-left">{title}</h3>
-        <p>{description}</p>
+        <p className="text-gray-700">{description}</p>
       </div>
     </li>
   );

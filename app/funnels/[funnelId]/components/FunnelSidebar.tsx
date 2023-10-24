@@ -10,21 +10,21 @@ type Props = {
 };
 
 function FunnelSidebar({ funnel, page }: Props) {
-  const [currentView, setCurrentView] = useState<"blocks" | "code">("code");
+  const [currentView, setCurrentView] = useState<"inspector" | "code">("inspector");
 
-  const handleViewChange = (view: "blocks" | "code") => {
+  const handleViewChange = (view: "inspector" | "code") => {
     setCurrentView(view);
   };
 
   return (
-    <>
+    <aside className="hidden md:block md:col-start-1 md:row-start-1 height-full overflow-y-auto">
       <header className="px-5 border-b border-b-slate-200 dark:border-b-slate-600">
-        <Tabs onChange={(tab) => handleViewChange(tab as "blocks" | "code")} initialValue="code">
-          <Tab value="blocks">Blocks</Tab>
+        <Tabs onChange={(tab) => handleViewChange(tab as "inspector" | "code")} initialValue="code">
+          <Tab value="inspector">Inspect</Tab>
           <Tab value="code">Code</Tab>
         </Tabs>
       </header>
-      {currentView === "blocks" && (
+      {currentView === "inspector" && (
         <section className="px-5 py-4">
           <FunnelSummary
             backgroundColor={funnel.bgColor}
@@ -43,7 +43,7 @@ function FunnelSidebar({ funnel, page }: Props) {
           />
         </section>
       )}
-    </>
+    </aside>
   );
 }
 

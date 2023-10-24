@@ -5,6 +5,7 @@ import { ListBulletIcon } from "@heroicons/react/24/solid";
 import { CursorArrowRippleIcon } from "@heroicons/react/24/solid";
 
 import { Block } from "@/app/store/types";
+import { PropertyList } from "@/app/components/PropertyList";
 
 interface FunnelSummaryProps {
   backgroundColor?: string;
@@ -31,9 +32,28 @@ function FunnelSummary({
     return <Icon className="w-6 h-6" />;
   };
 
+  const funnelData = [
+    {
+      type: "text",
+      name: "Name",
+      value: funnelName,
+    },
+    {
+      type: "number",
+      name: "Pages",
+      value: funnelNumPages.toString(),
+    },
+    {
+      type: "color",
+      name: "Background Color",
+      value: backgroundColor ?? '#FFFFFF',
+    }
+  ]
+
   return (
     <div className="flex flex-col gap-6">
-      <dl className="py-3 grid grid-cols-2 gap-y-2">
+      <PropertyList data={funnelData} />
+      {/* <dl className="py-3 grid grid-cols-2 gap-y-2">
         <dt className="border-slate-300 dark:border-slate-600 dark:text-slate-300 py-2">
           Name
         </dt>
@@ -56,7 +76,7 @@ function FunnelSummary({
             style={{ backgroundColor }}
           ></span>
         </dd>
-      </dl>
+      </dl> */}
 
       <section>
         <h3 className="text-xl font-medium mb-3">Blocks</h3>

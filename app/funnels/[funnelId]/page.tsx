@@ -53,9 +53,7 @@ export default function FunnelPage({ params }: { params: FunnelPageParams }) {
         </Tabs>
         <PagePreview {...page} bgColor={funnel.bgColor} />
       </section>
-      <aside className="hidden md:block md:col-start-1 md:row-start-1 height-full">
-        <FunnelSidebar funnel={funnel} page={page} />
-      </aside>
+      <FunnelSidebar funnel={funnel} page={page} />
     </section>
   );
 }
