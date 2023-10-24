@@ -39,7 +39,7 @@ export default function Home() {
 
   return (
     <>
-      <main className="flex min-h-screen flex-col items-center justify-between p-24 gap-8">
+      <main className="flex min-h-screen flex-col items-center p-24 gap-8">
         <header className="flex flex-col gap-3 items-center">
           <Image
             src="/perspective-logo.png"
@@ -57,6 +57,14 @@ export default function Home() {
             accept="application/json"
           />
         </section>
+        <footer>
+          <p>
+            Don&apos;t have a funnel file? use this{" "}
+            <a href="/funnel.json" className="text-blue-500" target="_blank">
+              sample file
+            </a>.
+          </p>
+        </footer>
       </main>
     </>
   );

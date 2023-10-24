@@ -18,11 +18,9 @@ export default function FunnelsLayout({
   const pageId = query.get("page");
   const pageIndex = funnel?.pages.findIndex((p) => p.id === pageId) ?? 0;
 
-  const breadcrumb = [funnel?.name ?? '', `Page ${pageIndex + 1}`];
-
   return (
     <>
-      <AppBar breadcrumb={breadcrumb} />
+      <AppBar title={funnel?.name ?? ''} />
 			<main className="h-full flex">
 				{children}
 			</main>

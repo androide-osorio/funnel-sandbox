@@ -5,16 +5,15 @@ import { useRouter } from "next/navigation";
 import { ArrowUpTrayIcon } from "@heroicons/react/24/solid";
 
 import useFunnelStore from "@/app/store";
-import { Breadcrumbs } from "./Breadcrumbs";
 import { FunnelProcessorErrors } from "../services/funnel-processor";
 import { getErrorText } from "../utils/error-texts";
 import { Alert } from "./Alert";
 
 type Props = {
-  breadcrumb?: string[];
+  title?: string;
 };
 
-export default function AppBar({ breadcrumb }: Props) {
+export default function AppBar({ title }: Props) {
   const store = useFunnelStore();
   const router = useRouter();
   const [error, setError] = React.useState<FunnelProcessorErrors | null>(null);
@@ -53,7 +52,7 @@ export default function AppBar({ breadcrumb }: Props) {
         height={32}
       />
       <div className="hidden md:block flex-1">
-        <Breadcrumbs path={breadcrumb} />
+        <h2 className="font-medium text-lg">{title}</h2>
       </div>
       <button
         className="rounded-lg bg-blue-500 hover:bg-blue-700 px-4 py-3 text-white flex items-center gap-2"
