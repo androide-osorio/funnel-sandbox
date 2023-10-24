@@ -18,7 +18,7 @@ function FunnelSidebar({ funnel, page }: Props) {
 
   return (
     <>
-      <header className="px-5">
+      <header className="px-5 border-b border-b-slate-200 dark:border-b-slate-600">
         <Tabs onChange={(tab) => handleViewChange(tab as "blocks" | "code")} initialValue="code">
           <Tab value="blocks">Blocks</Tab>
           <Tab value="code">Code</Tab>

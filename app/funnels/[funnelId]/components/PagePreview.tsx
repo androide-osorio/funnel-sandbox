@@ -28,10 +28,16 @@ export function PagePreview({ blocks, bgColor = "white" }: Props) {
 
   return (
     <div
-      className="p-12 flex flex-col gap-5 min-h-full"
-      style={{ backgroundColor: bgColor }}
+      id="funnel-preview"
+      aria-live="assertive"
+      className="overflow-x-hidden md:rounded-3xl shadow-xl md:max-w-sm max-h-[600px] md:h-[600px]"
     >
-      {memoizedBlocks}
+      <div
+        className="p-12 flex flex-col gap-5 min-h-full"
+        style={{ backgroundColor: bgColor }}
+      >
+        {memoizedBlocks}
+      </div>
     </div>
   );
 }

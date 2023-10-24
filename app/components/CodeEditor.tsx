@@ -1,5 +1,8 @@
 import React, { useState } from 'react';
+import { useMediaQuery } from 'react-responsive';
 import CodeMirror from "@uiw/react-codemirror";
+import { githubLight } from "@uiw/codemirror-theme-github";
+import { nord } from "@uiw/codemirror-theme-nord";
 import { json } from "@codemirror/lang-json";
 
 interface CodeEditorProps {
@@ -10,6 +13,9 @@ interface CodeEditorProps {
 }
 
 const CodeEditor: React.FC<CodeEditorProps> = ({ code, language, editable = false, onChange }) => {
+  const isDarkMode = useMediaQuery({ query: "(prefers-color-scheme: dark)" });
+  const theme = isDarkMode ? nord : githubLight;
+
   return (
     <CodeMirror
       value={code}
@@ -17,6 +23,7 @@ const CodeEditor: React.FC<CodeEditorProps> = ({ code, language, editable = fals
       extensions={[json()]}
       onChange={onChange}
       editable={editable}
+      theme={theme}
     />
   );
 };

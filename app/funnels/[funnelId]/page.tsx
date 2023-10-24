@@ -51,15 +51,7 @@ export default function FunnelPage({ params }: { params: FunnelPageParams }) {
             </Tab>
           ))}
         </Tabs>
-        <div
-          id="funnel-preview"
-          aria-live="assertive"
-          className={`overflow-x-hidden bg-${
-            `[${funnel.bgColor}]` ?? "white"
-          } md:rounded-3xl shadow-xl max-w-sm md:h-[600px]`}
-        >
-          <PagePreview {...page} bgColor={funnel.bgColor} />
-        </div>
+        <PagePreview {...page} bgColor={funnel.bgColor} />
       </section>
       <aside className="hidden md:block md:col-start-1 md:row-start-1 height-full">
         <FunnelSidebar funnel={funnel} page={page} />
