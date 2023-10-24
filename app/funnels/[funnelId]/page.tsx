@@ -5,8 +5,9 @@ import Link from "next/link";
 import { useFunnelStore } from "@/app/store";
 import CodeEditor from "@/app/components/CodeEditor";
 import { PagePreview } from "@/app/funnels/[funnelId]/components/PagePreview";
-import { useSearchParams } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 import FunnelSidebar from "./components/FunnelSidebar";
+import { Tabs, Tab } from "@/app/components/Tabs";
 
 type FunnelPageParams = {
   funnelId: string;
@@ -14,6 +15,7 @@ type FunnelPageParams = {
 
 export default function FunnelPage({ params }: { params: FunnelPageParams }) {
   const { funnelId } = params;
+  const router = useRouter();
   const query = useSearchParams();
   const funnel = useFunnelStore((state) =>
     state.funnels.find((f) => f.id === funnelId)
@@ -26,33 +28,23 @@ export default function FunnelPage({ params }: { params: FunnelPageParams }) {
   const pageId = query.get("page");
   const page = funnel.pages.find((p) => p.id === pageId) ?? funnel.pages[0];
 
+  const handlePageChange = (newPageId: string) => {
+    router.push(`/funnels/${funnelId}?page=${newPageId}`);
+  }
+
   return (
     <section className="flex flex-col-reverse md:grid md:grid-cols-3 w-full">
       <section className="flex flex-col md:flex-row-reverse md:justify-center md:items-center md:col-start-2 md:col-span-2 md:gap-8 bg-slate-50 dark:bg-slate-950 h-[100vh]">
         <header className="md:hidden px-6 py-6">
           <h1 className="text-2xl text-bold">{funnel.name}</h1>
         </header>
-        <nav aria-controls="funnel-preview">
-          <ol className="flex md:flex-col justify-center gap-2">
-            {funnel.pages.map((page, i) => (
-              <li
-                key={`funnel-${funnelId}-page-${page.id}-link`}
-                className={`py-2 px-4 ${
-                  page.id === pageId
-                    ? "border-blue-500 border-b-2 md:border-b-0 md:border-l-2"
-                    : "md:ml-[2px]"
-                }`}
-              >
-                <Link
-                  href="/funnels/[funnelId]"
-                  as={`/funnels/${funnel.id}?page=${page.id}`}
-                >
-                  Page {i + 1}
-                </Link>
-              </li>
-            ))}
-          </ol>
-        </nav>
+        <Tabs variant="vertical" onChange={handlePageChange} initialValue={pageId ?? ""}>
+          {funnel.pages.map((page, i) => (
+            <Tab key={`funnel-${funnelId}-page-${page.id}`} value={page.id}>
+              Page {i + 1}
+            </Tab>
+          ))}
+        </Tabs>
         <div
           id="funnel-preview"
           aria-live="assertive"
