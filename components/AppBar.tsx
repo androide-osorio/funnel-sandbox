@@ -4,9 +4,10 @@ import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { ArrowUpTrayIcon } from "@heroicons/react/24/solid";
 
-import useFunnelStore from "@/app/store";
-import { FunnelProcessorErrors } from "../services/funnel-processor";
-import { getErrorText } from "../utils/error-texts";
+import useFunnelStore from "@/store";
+import { FunnelProcessorErrors } from "@/services/funnel-processor";
+import { getErrorText } from "@/utils/error-texts";
+
 import { Alert } from "./Alert";
 
 type Props = {

@@ -1,8 +1,8 @@
 'use client'
 
-import AppBar from "@/app/components/AppBar";
+import AppBar from "@/components/AppBar";
 import { useParams, useSearchParams } from "next/navigation";
-import useFunnelStore from "../store";
+import useFunnelStore from "@/store";
 
 export default function FunnelsLayout({
   children,

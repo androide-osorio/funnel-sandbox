@@ -1,11 +1,11 @@
 import React from "react";
-import { Block, Page } from "@/app/store/types";
+import { Block, Page } from "@/typess";
 import {
   ButtonBlock,
   ImageBlock,
   ListBlock,
   TextBlock,
-} from "@/app/components/blocks";
+} from "@/components/blocks";
 
 type Props = Page & {
   bgColor?: string;

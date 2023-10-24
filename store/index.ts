@@ -2,8 +2,8 @@ import { create } from "zustand";
 import { persist, PersistOptions } from "zustand/middleware";
 import { v4 as uuidv4 } from "uuid";
 
-import { FunnelWithId } from "./types";
-import { FunnelProcessor, FunnelProcessorErrors, ParsedFunnel } from "@/app/services/funnel-processor";
+import { FunnelWithId } from "@/types";
+import { FunnelProcessor, FunnelProcessorErrors, ParsedFunnel } from "@/services/funnel-processor";
 
 type Data = {
   funnels: FunnelWithId[];

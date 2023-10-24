@@ -1,7 +1,9 @@
-import CodeEditor from "@/app/components/CodeEditor";
-import { Tab, Tabs } from "@/app/components/Tabs";
-import { Funnel, Page } from "@/app/store/types";
 import React, { useState } from "react";
+
+import CodeEditor from "@/components/CodeEditor";
+import { Tab, Tabs } from "@/components/Tabs";
+import { Funnel, Page } from "@/types";
+
 import FunnelSummary from "./FunnelSummary";
 
 type Props = {

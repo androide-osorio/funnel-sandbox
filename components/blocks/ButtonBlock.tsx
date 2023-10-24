@@ -1,4 +1,4 @@
-import { ButtonBlock } from "../../store/types";
+import { ButtonBlock } from "@/typess";
 
 type Props = Omit<ButtonBlock, "type">;
 

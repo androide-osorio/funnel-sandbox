@@ -4,11 +4,11 @@ import { useEffect, useState } from "react";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 
-import { useFunnelStore } from "@/app/store";
-import FileLoader from "@/app/components/FileLoader";
-import { FunnelProcessorErrors } from "./services/funnel-processor";
-import { Alert } from "./components/Alert";
-import { getErrorText } from "./utils/error-texts";
+import { useFunnelStore } from "@/store";
+import FileLoader from "@/components/FileLoader";
+import { FunnelProcessorErrors } from "../services/funnel-processor";
+import { Alert } from "../components/Alert";
+import { getErrorText } from "../utils/error-texts";
 
 export default function Home() {
   const router = useRouter();

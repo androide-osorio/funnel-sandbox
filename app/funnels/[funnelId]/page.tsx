@@ -1,13 +1,14 @@
 "use client";
+
 import React from "react";
 import { useMediaQuery } from "react-responsive";
-
-import { useFunnelStore } from "@/app/store";
-import CodeEditor from "@/app/components/CodeEditor";
-import { PagePreview } from "@/app/funnels/[funnelId]/components/PagePreview";
 import { useRouter, useSearchParams } from "next/navigation";
+
+import { useFunnelStore } from "@/store";
+import { Tabs, Tab } from "@/components/Tabs";
+
 import FunnelSidebar from "./components/FunnelSidebar";
-import { Tabs, Tab } from "@/app/components/Tabs";
+import { PagePreview } from "./components/PagePreview";
 
 type FunnelPageParams = {
   funnelId: string;

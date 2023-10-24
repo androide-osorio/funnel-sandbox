@@ -1,4 +1,4 @@
-import { ImageBlock } from "../../store/types";
+import { ImageBlock } from "@/typess";
 
 type Props = Omit<ImageBlock, "type"> & {
   alt: string;
