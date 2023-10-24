@@ -8,17 +8,7 @@ import { useFunnelStore } from "@/app/store";
 import FileLoader from "@/app/components/FileLoader";
 import { FunnelProcessorErrors } from "./services/funnel-processor";
 import { Alert } from "./components/Alert";
-
-function getErrorText(error: FunnelProcessorErrors) {
-  switch(error) {
-    case FunnelProcessorErrors.FILE_PARSE_ERROR:
-      return "Please upload a valid funnel file. It should be a .json file with valid JSON code.";
-    case FunnelProcessorErrors.FILE_READ_ERROR:
-      return "We don't have permission to read the file you uploaded. Please try again.";
-    default:
-      return "An unknown error occurred.";
-  }
-}
+import { getErrorText } from "./utils/error-texts";
 
 export default function Home() {
   const router = useRouter();
@@ -38,8 +28,14 @@ export default function Home() {
   };
 
   useEffect(() => {
-    console.log("Funnels in storage:", store.funnels);
-  }, [store]);
+    let timer: NodeJS.Timeout;
+    if (error) {
+      timer = setTimeout(() => {
+        setError(null);
+      }, 10000);
+    }
+    return () => clearTimeout(timer);
+  }, [error]);
 
   return (
     <>
@@ -51,14 +47,10 @@ export default function Home() {
             width={56}
             height={56}
           />
-          <h1 className="text-4xl font-bold">
-            Funnel inspector
-          </h1>
+          <h1 className="text-4xl font-bold">Funnel inspector</h1>
           <p>Please upload a funnel to preview...</p>
         </header>
-        {error && (
-          <Alert title="Oops!" text={getErrorText(error)} />
-        )}
+        {error && <Alert title="Oops!" text={getErrorText(error)} />}
         <section>
           <FileLoader
             onFileUpload={handleFileUpload}
