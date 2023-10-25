@@ -7,7 +7,7 @@ import { CursorArrowRippleIcon } from "@heroicons/react/24/solid";
 import { Block } from "@/types";
 import { PropertyList } from "@/components/PropertyList";
 import { CodeEditor } from "@/components/CodeEditor";
-import { useHighlightBlock } from "@/app/components/HighlighBlockProvider";
+import { useHighlightBlock } from "@/app/components/HighlightBlockProvider";
 
 interface FunnelSummaryProps {
   backgroundColor?: string;

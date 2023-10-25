@@ -6,7 +6,7 @@ import {
   ListBlock,
   TextBlock,
 } from "@/components/blocks";
-import { useHighlightBlock } from "@/app/components/HighlighBlockProvider";
+import { useHighlightBlock } from "@/app/components/HighlightBlockProvider";
 
 type Props = Page & {
   bgColor?: string;

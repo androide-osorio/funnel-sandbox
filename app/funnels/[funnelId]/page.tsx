@@ -9,7 +9,7 @@ import { Tabs, Tab } from "@/components/Tabs";
 
 import FunnelSidebar from "./components/FunnelSidebar";
 import { PagePreview } from "./components/PagePreview";
-import { useHighlightBlock } from "@/app/components/HighlighBlockProvider";
+import { useHighlightBlock } from "@/app/components/HighlightBlockProvider";
 import { useFunnelFromUrl } from "@/app/hooks/use-funnel-from-url";
 
 type FunnelPageParams = {

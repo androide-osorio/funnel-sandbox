@@ -4,7 +4,7 @@ import { AlertProvider } from "@/components/AlertProvider";
 import { AppBar } from "../components/AppBar";
 
 import { useFunnelFromUrl } from "../hooks/use-funnel-from-url";
-import { HighlightBlockProvider } from "@/app/components/HighlighBlockProvider";
+import { HighlightBlockProvider } from "@/app/components/HighlightBlockProvider";
 
 export default function FunnelsLayout({
   children,
