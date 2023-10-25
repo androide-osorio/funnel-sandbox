@@ -7,7 +7,7 @@ type ListItemProps = ListItemBlockType;
 
 export function ListItemBlock({ src, title, description }: ListItemProps) {
   return (
-    <li className="flex flex-row gap-3 py-5 px-3 mb-5 w-full rounded-md transition-transform transform-gpu hover:scale-105 bg-white border border-blue-100">
+    <li className="flex flex-col gap-3 items-center py-4 px-2 w-full rounded-md transition-transform transform-gpu hover:scale-105 bg-white border border-slate-200 shadow-md">
       {src && (
         <Image
           src={src}
@@ -19,8 +19,8 @@ export function ListItemBlock({ src, title, description }: ListItemProps) {
         />
       )}
       <div>
-        <h3 className="text-lg font-medium text-gray-800 text-left">{title}</h3>
-        <p className="text-gray-700">{description}</p>
+        <h3 className="text-lg font-bold text-blue-900 text-center">{title}</h3>
+        <p className="text-gray-700 text-center">{description}</p>
       </div>
     </li>
   );
@@ -28,7 +28,7 @@ export function ListItemBlock({ src, title, description }: ListItemProps) {
 
 export function ListBlock({ id, items }: ListProps) {
   return (
-    <ul>
+    <ul className="grid grid-cols-2 gap-3">
       {items.map((item, i) => (
         <ListItemBlock key={`${id}-item-${i}`} {...item} />
       ))}
