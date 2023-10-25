@@ -1,3 +1,5 @@
+import { useId } from "react";
+
 type PropertyDescription = {
   type: string;
   name: string;
@@ -9,20 +11,15 @@ type Props = {
 };
 
 export function PropertyList({ data }: Props) {
+  const id = useId();
   return (
-    <dl className="py-3 grid grid-cols-2">
+    <dl className="py-3">
       {data.map((property, i) => (
-        <>
-          <dt
-            key={`property-${i}-key-${property.name}`}
-            className="first:-border-t-0 border-b border-slate-300 dark:border-slate-600 dark:text-slate-300 py-3"
-          >
+        <div key={`proplist-${id}-property-${i}`} className="grid grid-cols-2">
+          <dt className="first:-border-t-0 border-b border-slate-300 dark:border-slate-600 dark:text-slate-300 py-3">
             {property.name}
           </dt>
-          <dd
-            key={`property-${i}-value-${property.value}`}
-            className="first:border-t-0 border-b text-right border-slate-300  dark:text-slate-300 dark:border-slate-600 py-3 flex justify-end items-center gap-2"
-          >
+          <dd className="first:border-t-0 border-b text-right border-slate-300  dark:text-slate-300 dark:border-slate-600 py-3 flex justify-end items-center gap-2">
             {property.value}
             {property.type === "color" && (
               <span
@@ -32,7 +29,7 @@ export function PropertyList({ data }: Props) {
               ></span>
             )}
           </dd>
-        </>
+        </div>
       ))}
     </dl>
   );

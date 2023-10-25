@@ -30,6 +30,7 @@ export function PagePreview({
       const Component = BLOCK_MAPPINGS[block.type];
       return (
         <div
+          key={block.id}
           className={
             currentBlock === block.id
               ? "ring ring-offset-8 ring-blue-500 rounded-md"
