@@ -36,13 +36,14 @@ export const useFunnelStore = create<State>()(
         const processor = FunnelProcessor();
         try {
           const result = await processor.readFunnelFromFile(file);
-          const funnel = (result as ParsedFunnel).data;
           const id = uuidv4();
+          const funnel = { ...(result as ParsedFunnel).data, id };
           set((state: State) => ({
-            funnels: [...state.funnels, { ...funnel, id }],
+            funnels: [...state.funnels, funnel],
           }));
           return id;
         } catch (error) {
+          console.log(error)
           throw error as FunnelProcessorErrors;
         }
       },
