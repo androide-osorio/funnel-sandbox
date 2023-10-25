@@ -9,30 +9,25 @@ import { Tabs, Tab } from "@/components/Tabs";
 
 import FunnelSidebar from "./components/FunnelSidebar";
 import { PagePreview } from "./components/PagePreview";
+import { useFunnelFromUrl } from "@/app/hooks/use-funnel-from-url";
 
 type FunnelPageParams = {
   funnelId: string;
 };
 
 export default function FunnelPage({ params }: { params: FunnelPageParams }) {
-  const { funnelId } = params;
   const router = useRouter();
-  const query = useSearchParams();
+  const {funnel, page } = useFunnelFromUrl();
   const isSmallScreen = useMediaQuery({ maxWidth: 767 });
-
-  const funnel = useFunnelStore((state) =>
-    state.funnels.find((f) => f.id === funnelId)
-  );
 
   if (!funnel) {
     return <div>Funnel not found</div>;
   }
 
-  const pageId = query.get("page");
-  const page = funnel.pages.find((p) => p.id === pageId) ?? funnel.pages[0];
+  const currentPage = page ?? funnel.pages[0];
 
   const handlePageChange = (newPageId: string) => {
-    router.push(`/funnels/${funnelId}?page=${newPageId}`);
+    router.push(`/funnels/${funnel.id}?page=${newPageId}`);
   };
 
   return (
@@ -44,17 +39,17 @@ export default function FunnelPage({ params }: { params: FunnelPageParams }) {
         <Tabs
           variant={isSmallScreen ? "horizontal" : "vertical"}
           onChange={handlePageChange}
-          initialValue={pageId ?? ""}
+          initialValue={page?.id ?? ""}
         >
           {funnel.pages.map((page, i) => (
-            <Tab key={`funnel-${funnelId}-page-${page.id}`} value={page.id}>
+            <Tab key={`funnel-${funnel.id}-page-${page.id}`} value={page.id}>
               Page {i + 1}
             </Tab>
           ))}
         </Tabs>
-        <PagePreview {...page} bgColor={funnel.bgColor} />
+        <PagePreview {...currentPage} bgColor={funnel.bgColor} />
       </section>
-      <FunnelSidebar funnel={funnel} page={page} />
+      <FunnelSidebar funnel={funnel} page={currentPage} />
     </section>
   );
 }
