@@ -1,7 +1,9 @@
 'use client'
 
-import AppBar from "@/components/AppBar";
 import { useParams, useSearchParams } from "next/navigation";
+
+import { AlertProvider } from "@/components/AlertProvider";
+import AppBar from "@/components/AppBar";
 import useFunnelStore from "@/store";
 
 export default function FunnelsLayout({
@@ -19,11 +21,11 @@ export default function FunnelsLayout({
   const pageIndex = funnel?.pages.findIndex((p) => p.id === pageId) ?? 0;
 
   return (
-    <>
+    <AlertProvider>
       <AppBar title={funnel?.name ?? ''} />
 			<main className="h-full flex">
 				{children}
 			</main>
-    </>
+    </AlertProvider>
   );
 }
