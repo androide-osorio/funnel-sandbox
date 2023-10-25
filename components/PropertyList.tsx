@@ -14,13 +14,13 @@ export function PropertyList({ data }: Props) {
       {data.map((property, i) => (
         <>
           <dt
-            key={`property-${i}-key`}
+            key={`property-${i}-key-${property.name}`}
             className="first:-border-t-0 border-b border-slate-300 dark:border-slate-600 dark:text-slate-300 py-3"
           >
             {property.name}
           </dt>
           <dd
-            key={`property-${i}-value`}
+            key={`property-${i}-value-${property.value}`}
             className="first:border-t-0 border-b text-right border-slate-300  dark:text-slate-300 dark:border-slate-600 py-3 flex justify-end items-center gap-2"
           >
             {property.value}

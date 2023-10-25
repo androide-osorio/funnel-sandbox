@@ -16,7 +16,7 @@ type Props = {
   title?: string;
 };
 
-export default function AppBar({ title }: Props) {
+export function AppBar({ title }: Props) {
   const store = useFunnelStore();
   const router = useRouter();
   const { showAlert } = useAlert();

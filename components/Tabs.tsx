@@ -36,6 +36,7 @@ export const Tabs = ({ variant, initialValue, children, onChange, ...rest }: Tab
         variant === "vertical" ? "flex-col" : "flex-row"
       } -mb-px gap-2`}
       aria-label="Tabs"
+      role="tablist"
       {...rest}
     >
       {React.Children.map(children, (child) => {
@@ -55,6 +56,7 @@ export const Tabs = ({ variant, initialValue, children, onChange, ...rest }: Tab
               variant === "vertical" ? verticalTabStyles : horizontalTabStyles
             }`}
             onClick={() => handleChange(value)}
+            role="tab"
           >
             {child.props.children}
           </button>
