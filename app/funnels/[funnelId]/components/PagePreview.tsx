@@ -20,10 +20,7 @@ const BLOCK_MAPPINGS: Record<string, React.ComponentType<any>> = {
   button: ButtonBlock,
 };
 
-export function PagePreview({
-  blocks,
-  bgColor = "white",
-}: Props) {
+export function PagePreview({ blocks, bgColor = "white" }: Props) {
   const { currentBlock } = useHighlightBlock();
   const mapBlock = useCallback(
     (block: Block) => {
@@ -41,12 +38,12 @@ export function PagePreview({
         </div>
       );
     },
-    [currentBlock]
+    [currentBlock],
   );
 
   const memoizedBlocks = React.useMemo(
     () => blocks.map(mapBlock),
-    [blocks, mapBlock]
+    [blocks, mapBlock],
   );
 
   return (

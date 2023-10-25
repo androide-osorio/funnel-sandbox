@@ -1,6 +1,9 @@
 import React from "react";
 import { act, fireEvent, render, screen } from "@testing-library/react";
-import { HighlightBlockProvider, useHighlightBlock } from "./HighlightBlockProvider";
+import {
+  HighlightBlockProvider,
+  useHighlightBlock,
+} from "./HighlightBlockProvider";
 
 describe("HighlightBlockProvider", () => {
   it("sets currentBlock to the provided blockId when highlightBlock is called", async () => {
@@ -15,7 +18,7 @@ describe("HighlightBlockProvider", () => {
     await render(
       <HighlightBlockProvider>
         <TestComponent />
-      </HighlightBlockProvider>
+      </HighlightBlockProvider>,
     );
     const buttonElement = screen.getByRole("button");
     expect(buttonElement).toBeInTheDocument();
@@ -40,7 +43,7 @@ describe("HighlightBlockProvider", () => {
     await render(
       <HighlightBlockProvider>
         <TestComponent />
-      </HighlightBlockProvider>
+      </HighlightBlockProvider>,
     );
     const highlightButtonElement = screen.getByText("Highlight Block");
     const unhighlightButtonElement = screen.getByText("Unhighlight");

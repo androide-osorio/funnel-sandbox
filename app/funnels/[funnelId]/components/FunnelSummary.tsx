@@ -29,7 +29,7 @@ function FunnelSummary({
   funnelName,
   funnelNumPages,
 }: FunnelSummaryProps) {
-  const {highlightBlock, unhighlight} = useHighlightBlock();
+  const { highlightBlock, unhighlight } = useHighlightBlock();
   const iconForBlock = (block: Block) => {
     const Icon = BlockIconMap[block.type];
     return <Icon className="w-6 h-6" />;
@@ -49,9 +49,9 @@ function FunnelSummary({
     {
       type: "color",
       name: "Background Color",
-      value: backgroundColor ?? '#FFFFFF',
-    }
-  ]
+      value: backgroundColor ?? "#FFFFFF",
+    },
+  ];
 
   return (
     <div className="flex flex-col gap-6">

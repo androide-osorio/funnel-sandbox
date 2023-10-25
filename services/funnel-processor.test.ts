@@ -27,14 +27,16 @@ describe("FunnelProcessor", () => {
       const processor = FunnelProcessor();
       const blob = new Blob(["invalid json"], { type: "application/json" });
       const file = new File([blob], "test.json", { type: "application/json" });
-			expect(processor.readFunnelFromFile(file)).rejects.toThrow(FunnelProcessorErrors.FILE_PARSE_ERROR as any);
+      expect(processor.readFunnelFromFile(file)).rejects.toThrow(
+        FunnelProcessorErrors.FILE_PARSE_ERROR as any,
+      );
     });
 
     it("should reject with FILE_READ_ERROR when there is an error reading the file", async () => {
       const processor = FunnelProcessor();
       const file = new File([], "test.json", { type: "application/json" });
-			expect(processor.readFunnelFromFile(file)).rejects.toThrow(
-        FunnelProcessorErrors.FILE_READ_ERROR as any
+      expect(processor.readFunnelFromFile(file)).rejects.toThrow(
+        FunnelProcessorErrors.FILE_READ_ERROR as any,
       );
     });
   });

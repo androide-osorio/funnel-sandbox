@@ -3,7 +3,11 @@ import { persist, PersistOptions } from "zustand/middleware";
 import { v4 as uuidv4 } from "uuid";
 
 import { FunnelWithId } from "@/types";
-import { FunnelProcessor, FunnelProcessorErrors, ParsedFunnel } from "@/services/funnel-processor";
+import {
+  FunnelProcessor,
+  FunnelProcessorErrors,
+  ParsedFunnel,
+} from "@/services/funnel-processor";
 
 type Data = {
   funnels: FunnelWithId[];
@@ -32,7 +36,9 @@ export const useFunnelStore = create<State>()(
         set((state: State) => ({
           funnels: state.funnels.filter((funnel) => funnel.id !== funnelId),
         })),
-      addFunnelFromFile: async (file: File): Promise<string | FunnelProcessorErrors> => {
+      addFunnelFromFile: async (
+        file: File,
+      ): Promise<string | FunnelProcessorErrors> => {
         const processor = FunnelProcessor();
         try {
           const result = await processor.readFunnelFromFile(file);
@@ -43,13 +49,13 @@ export const useFunnelStore = create<State>()(
           }));
           return id;
         } catch (error) {
-          console.log(error)
+          console.log(error);
           throw error as FunnelProcessorErrors;
         }
       },
     }),
-    persistOptions
-  )
+    persistOptions,
+  ),
 );
 
 export default useFunnelStore;

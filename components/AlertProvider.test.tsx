@@ -15,7 +15,7 @@ describe("AlertProvider", () => {
     await render(
       <AlertProvider>
         <TestComponent />
-      </AlertProvider>
+      </AlertProvider>,
     );
     const buttonElement = screen.getByRole("button");
     expect(buttonElement).toBeInTheDocument();
@@ -39,7 +39,7 @@ describe("AlertProvider", () => {
     await render(
       <AlertProvider>
         <TestComponent />
-      </AlertProvider>
+      </AlertProvider>,
     );
     const buttonElement = screen.getByRole("button");
     expect(buttonElement).toBeInTheDocument();
@@ -51,9 +51,9 @@ describe("AlertProvider", () => {
     const alertElement = screen.getByRole("alert");
     expect(alertElement).toHaveTextContent("Test Alert");
 
-		await act(() => {
-			jest.advanceTimersByTime(11000);
-		})
+    await act(() => {
+      jest.advanceTimersByTime(11000);
+    });
     expect(alertElement).not.toBeInTheDocument();
   });
 });

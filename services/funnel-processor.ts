@@ -3,7 +3,7 @@ import { Funnel } from "@/types";
 export type ParsedFunnel = {
   name: string;
   data: Funnel;
-}
+};
 
 type FunnelProcessor = {
   readFunnelFromFile(file: File): Promise<ParsedFunnel | FunnelProcessorErrors>;
@@ -15,7 +15,9 @@ export enum FunnelProcessorErrors {
 }
 
 export function FunnelProcessor(): FunnelProcessor {
-  async function readFunnelFromFile(file: File): Promise<ParsedFunnel | FunnelProcessorErrors> {
+  async function readFunnelFromFile(
+    file: File,
+  ): Promise<ParsedFunnel | FunnelProcessorErrors> {
     return new Promise((resolve, reject) => {
       const reader = new FileReader();
 

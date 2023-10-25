@@ -1,4 +1,4 @@
-'use client'
+"use client";
 
 import { AlertProvider } from "@/components/AlertProvider";
 import { AppBar } from "../components/AppBar";
@@ -16,10 +16,8 @@ export default function FunnelsLayout({
   return (
     <AlertProvider>
       <HighlightBlockProvider>
-        <AppBar title={funnel?.name ?? ''} />
-        <main className="h-full flex">
-          {children}
-        </main>
+        <AppBar title={funnel?.name ?? ""} />
+        <main className="h-full flex">{children}</main>
       </HighlightBlockProvider>
     </AlertProvider>
   );

@@ -18,7 +18,7 @@ type FunnelPageParams = {
 
 export default function FunnelPage() {
   const router = useRouter();
-  const {funnel, page } = useFunnelFromUrl();
+  const { funnel, page } = useFunnelFromUrl();
   const { currentBlock, highlightBlock, unhighlight } = useHighlightBlock();
   const isSmallScreen = useMediaQuery({ maxWidth: 767 });
 

@@ -6,7 +6,7 @@ export function useFunnelFromUrl() {
   const query = useSearchParams();
   const funnelId = params.funnelId;
   const funnel = useFunnelStore((state) =>
-    state.funnels.find((f) => f.id === funnelId)
+    state.funnels.find((f) => f.id === funnelId),
   );
 
   if (!funnel) {

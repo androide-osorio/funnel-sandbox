@@ -6,13 +6,13 @@ import React, {
 } from "react";
 
 type HighlightBlockContextType = {
-	currentBlock: string | null;
-	highlightBlock: (block: string) => void;
-	unhighlight: () => void;
+  currentBlock: string | null;
+  highlightBlock: (block: string) => void;
+  unhighlight: () => void;
 };
 
 export const HighlightBlockContext = createContext<HighlightBlockContextType>({
-	currentBlock: null,
+  currentBlock: null,
   highlightBlock: (blockId) => {},
   unhighlight: () => {},
 });
@@ -20,21 +20,17 @@ export const HighlightBlockContext = createContext<HighlightBlockContextType>({
 export function HighlightBlockProvider({ children }: PropsWithChildren<{}>) {
   const [currentBlock, setCurrentBlock] = useState<string | null>(null);
 
-  const highlightBlock = useCallback(
-    (blockId: string) => {
-      setCurrentBlock(blockId);
-    },
-    []
-  );
-  const unhighlight = useCallback(
-    () => {
-      setCurrentBlock(null);
-    },
-    []
-  );
+  const highlightBlock = useCallback((blockId: string) => {
+    setCurrentBlock(blockId);
+  }, []);
+  const unhighlight = useCallback(() => {
+    setCurrentBlock(null);
+  }, []);
 
   return (
-    <HighlightBlockContext.Provider value={{ currentBlock, highlightBlock, unhighlight }}>
+    <HighlightBlockContext.Provider
+      value={{ currentBlock, highlightBlock, unhighlight }}
+    >
       {children}
     </HighlightBlockContext.Provider>
   );
@@ -45,7 +41,7 @@ export const useHighlightBlock = () => {
 
   if (!context) {
     throw new Error(
-      "useHighlightBlock must be used within an HighlightBlockProvider"
+      "useHighlightBlock must be used within an HighlightBlockProvider",
     );
   }
 

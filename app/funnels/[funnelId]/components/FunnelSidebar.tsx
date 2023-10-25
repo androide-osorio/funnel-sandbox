@@ -13,7 +13,9 @@ type Props = {
 };
 
 function FunnelSidebar({ funnel, page, onInspectBlock }: Props) {
-  const [currentView, setCurrentView] = useState<"inspector" | "code">("inspector");
+  const [currentView, setCurrentView] = useState<"inspector" | "code">(
+    "inspector",
+  );
 
   const handleViewChange = (view: "inspector" | "code") => {
     setCurrentView(view);
@@ -22,7 +24,10 @@ function FunnelSidebar({ funnel, page, onInspectBlock }: Props) {
   return (
     <aside className=" md:block md:col-start-1 md:row-start-1 md:height-full md:overflow-y-auto">
       <header className="px-5 border-b border-b-slate-200 dark:border-b-slate-600">
-        <Tabs onChange={(tab) => handleViewChange(tab as "inspector" | "code")} initialValue="inspector">
+        <Tabs
+          onChange={(tab) => handleViewChange(tab as "inspector" | "code")}
+          initialValue="inspector"
+        >
           <Tab value="inspector">Inspect</Tab>
           <Tab value="code">Code</Tab>
         </Tabs>

@@ -3,21 +3,21 @@ import { useDropzone } from "react-dropzone";
 import { ArrowUpTrayIcon } from "@heroicons/react/24/solid";
 
 type Props = {
-	onFileUpload: (files: File[]) => void;
-	accept?: string;
+  onFileUpload: (files: File[]) => void;
+  accept?: string;
 };
 
 export function FileLoader({ onFileUpload, accept }: Props) {
-	const onDrop = useCallback(
-		(acceptedFiles: File[]) => {
-			onFileUpload(acceptedFiles);
-		},
-		[onFileUpload]
-	);
+  const onDrop = useCallback(
+    (acceptedFiles: File[]) => {
+      onFileUpload(acceptedFiles);
+    },
+    [onFileUpload],
+  );
 
-	const { getRootProps, getInputProps, isDragActive } = useDropzone({ onDrop });
+  const { getRootProps, getInputProps, isDragActive } = useDropzone({ onDrop });
 
-	return (
+  return (
     <div
       {...getRootProps()}
       className="dark:bg-slate-700 hover:dark:bg-slate-600 bg-slate-100 hover:bg-slate-200 cursor-pointer rounded-2xl w-[50vmax] h-[33vh] flex flex-col gap-2 items-center justify-center py-8 min-h-[200px]"

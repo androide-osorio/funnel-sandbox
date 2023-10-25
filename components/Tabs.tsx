@@ -8,7 +8,7 @@ type TabProps = {
 
 type TabsProps = {
   children: React.ReactNode;
-	initialValue?: string;
+  initialValue?: string;
   variant?: "horizontal" | "vertical";
   onChange: (newTab: string) => void;
 };
@@ -17,7 +17,13 @@ export function Tab({ children }: TabProps) {
   return <>{children}</>;
 }
 
-export const Tabs = ({ variant, initialValue, children, onChange, ...rest }: TabsProps) => {
+export const Tabs = ({
+  variant,
+  initialValue,
+  children,
+  onChange,
+  ...rest
+}: TabsProps) => {
   const [activeTab, setActiveTab] = useState<string>(initialValue ?? "");
 
   const handleChange = (newTab: string) => {
