@@ -48,7 +48,7 @@ After having the basic concept, I iterated over it in real time using the applic
 
 The overall state shape for the application is similar to the following:
 
-```json
+```js
 {
   version: 0,
   funnels: [
