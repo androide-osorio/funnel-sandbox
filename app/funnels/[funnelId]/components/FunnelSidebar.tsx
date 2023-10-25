@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-import CodeEditor from "@/components/CodeEditor";
+import { CodeEditor } from "@/components/CodeEditor";
 import { Tab, Tabs } from "@/components/Tabs";
 import { Funnel, Page } from "@/types";
 
@@ -19,7 +19,7 @@ function FunnelSidebar({ funnel, page }: Props) {
   };
 
   return (
-    <aside className="hidden md:block md:col-start-1 md:row-start-1 height-full overflow-y-auto">
+    <aside className=" md:block md:col-start-1 md:row-start-1 md:height-full md:overflow-y-auto">
       <header className="px-5 border-b border-b-slate-200 dark:border-b-slate-600">
         <Tabs onChange={(tab) => handleViewChange(tab as "inspector" | "code")} initialValue="inspector">
           <Tab value="inspector">Inspect</Tab>

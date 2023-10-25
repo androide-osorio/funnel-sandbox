@@ -31,7 +31,7 @@ export default function FunnelPage({ params }: { params: FunnelPageParams }) {
   };
 
   return (
-    <section className="flex flex-col-reverse md:grid md:grid-cols-3 w-full">
+    <section className="flex flex-col md:grid md:grid-cols-3 w-full">
       <section className="flex flex-col md:flex-row-reverse md:justify-center md:items-center md:col-start-2 md:col-span-2 md:gap-8 bg-slate-50 dark:bg-slate-950 h-[100vh]">
         <header className="md:hidden px-6 py-6">
           <h1 className="text-2xl text-bold">{funnel.name}</h1>
