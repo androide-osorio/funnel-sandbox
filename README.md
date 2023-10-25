@@ -76,6 +76,8 @@ You can upload a valid JSON funnel file to the inspector by dragging and droppin
 - Navigate to the inspection page, where you can inspect your funnel's block by page or see the full code.
 - Highlight a specific block from the funnel and inspect its properties
 
+[inspector-recording.webm](https://github.com/androide-osorio/perspective-test/assets/1386527/18aeba2f-dfc4-4dbd-8e0b-48b18267bce1)
+
 ## Improvement opportunities
 
 The following are some of the aspects that I have left pending due to time constraints, but that are important for this to be production-ready.
