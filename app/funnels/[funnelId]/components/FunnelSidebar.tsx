@@ -9,9 +9,10 @@ import FunnelSummary from "./FunnelSummary";
 type Props = {
   funnel: Funnel;
   page: Page;
+  onInspectBlock?: (blockId: string) => void;
 };
 
-function FunnelSidebar({ funnel, page }: Props) {
+function FunnelSidebar({ funnel, page, onInspectBlock }: Props) {
   const [currentView, setCurrentView] = useState<"inspector" | "code">("inspector");
 
   const handleViewChange = (view: "inspector" | "code") => {
@@ -33,6 +34,7 @@ function FunnelSidebar({ funnel, page }: Props) {
             blocks={page.blocks}
             funnelName={funnel.name}
             funnelNumPages={funnel.pages.length}
+            onBlockChange={(blockId) => onInspectBlock?.(blockId)}
           />
         </section>
       )}

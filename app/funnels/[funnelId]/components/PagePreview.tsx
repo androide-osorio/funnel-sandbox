@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useCallback } from "react";
 import { Block, Page } from "@/types";
 import {
   ButtonBlock,
@@ -9,6 +9,7 @@ import {
 
 type Props = Page & {
   bgColor?: string;
+  highlightedBlock?: string;
 };
 
 const BLOCK_MAPPINGS: Record<string, React.ComponentType<any>> = {
@@ -18,13 +19,33 @@ const BLOCK_MAPPINGS: Record<string, React.ComponentType<any>> = {
   button: ButtonBlock,
 };
 
-export function PagePreview({ blocks, bgColor = "white" }: Props) {
-  const mapBlock = (block: Block) => {
-    const Component = BLOCK_MAPPINGS[block.type];
-    return <Component {...block} />;
-  };
+export function PagePreview({
+  blocks,
+  bgColor = "white",
+  highlightedBlock,
+}: Props) {
+  const mapBlock = useCallback(
+    (block: Block) => {
+      const Component = BLOCK_MAPPINGS[block.type];
+      return (
+        <div
+          className={
+            highlightedBlock === block.id
+              ? "ring ring-offset-8 ring-blue-500 rounded-md"
+              : ""
+          }
+        >
+          <Component {...block} />
+        </div>
+      );
+    },
+    [highlightedBlock]
+  );
 
-  const memoizedBlocks = React.useMemo(() => blocks.map(mapBlock), [blocks]);
+  const memoizedBlocks = React.useMemo(
+    () => blocks.map(mapBlock),
+    [blocks, mapBlock]
+  );
 
   return (
     <div

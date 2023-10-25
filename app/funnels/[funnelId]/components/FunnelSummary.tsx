@@ -7,12 +7,14 @@ import { CursorArrowRippleIcon } from "@heroicons/react/24/solid";
 import { Block } from "@/types";
 import { PropertyList } from "@/components/PropertyList";
 import { CodeEditor } from "@/components/CodeEditor";
+import { on } from "events";
 
 interface FunnelSummaryProps {
   backgroundColor?: string;
   blocks: Block[];
   funnelName: string;
   funnelNumPages: number;
+  onBlockChange?: (blockId: string) => void;
 }
 
 const BlockIconMap = {
@@ -27,6 +29,7 @@ function FunnelSummary({
   blocks,
   funnelName,
   funnelNumPages,
+  onBlockChange,
 }: FunnelSummaryProps) {
   const iconForBlock = (block: Block) => {
     const Icon = BlockIconMap[block.type];
@@ -62,6 +65,8 @@ function FunnelSummary({
             <li
               key={block.id}
               className="py-3 px-6 bg-slate-100 hover:bg-slate-200 dark:bg-slate-700 dark:hover:bg-slate-600 rounded-lg transition transition-gpu cursor-pointer"
+              onClick={() => onBlockChange?.(block.id)}
+              onMouseEnter={() => onBlockChange?.(block.id)}
             >
               <details>
                 <summary className="flex gap-2">

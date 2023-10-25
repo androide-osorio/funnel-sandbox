@@ -18,6 +18,7 @@ type FunnelPageParams = {
 export default function FunnelPage() {
   const router = useRouter();
   const {funnel, page } = useFunnelFromUrl();
+  const [inspectedBlockId, setInspectedBlockId] = React.useState<string | null>();
   const isSmallScreen = useMediaQuery({ maxWidth: 767 });
 
   if (!funnel) {
@@ -29,6 +30,10 @@ export default function FunnelPage() {
   const handlePageChange = (newPageId: string) => {
     router.push(`/funnels/${funnel.id}?page=${newPageId}`);
   };
+
+  const handleInspectBlock = (blockId: string): void => {
+    setInspectedBlockId(blockId);
+  }
 
   return (
     <section className="flex flex-col md:grid md:grid-cols-3 lg:grid-cols-4 w-full">
@@ -47,9 +52,9 @@ export default function FunnelPage() {
             </Tab>
           ))}
         </Tabs>
-        <PagePreview {...currentPage} bgColor={funnel.bgColor} />
+        <PagePreview {...currentPage} bgColor={funnel.bgColor} highlightedBlock={inspectedBlockId} />
       </section>
-      <FunnelSidebar funnel={funnel} page={currentPage} />
+      <FunnelSidebar funnel={funnel} page={currentPage} onInspectBlock={handleInspectBlock} />
     </section>
   );
 }
