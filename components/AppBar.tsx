@@ -10,6 +10,7 @@ import { getErrorText } from "@/utils/error-texts";
 
 import { Alert } from "./Alert";
 import { useAlert } from "./AlertProvider";
+import Link from "next/link";
 
 type Props = {
   title?: string;
@@ -41,12 +42,14 @@ export default function AppBar({ title }: Props) {
 
   return (
     <header className="shadow-lg flex gap-4 justify-between items-center bg-white dark:bg-slate-800 px-6 py-4 sticky z-10 border-b-gray-100 dark:border-b-slate-600 border-b">
-      <Image
-        src="/perspective-logo.png"
-        alt="Perspective.io"
-        width={32}
-        height={32}
-      />
+      <Link href="/">
+        <Image
+          src="/perspective-logo.png"
+          alt="Perspective.io"
+          width={32}
+          height={32}
+        />
+      </Link>
       <div className="hidden md:block flex-1">
         <h2 className="font-medium text-lg">{title}</h2>
       </div>
