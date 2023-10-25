@@ -6,6 +6,7 @@ import {
   ListBlock,
   TextBlock,
 } from "@/components/blocks";
+import { useHighlightBlock } from "@/app/components/HighlighBlockProvider";
 
 type Props = Page & {
   bgColor?: string;
@@ -22,15 +23,15 @@ const BLOCK_MAPPINGS: Record<string, React.ComponentType<any>> = {
 export function PagePreview({
   blocks,
   bgColor = "white",
-  highlightedBlock,
 }: Props) {
+  const { currentBlock } = useHighlightBlock();
   const mapBlock = useCallback(
     (block: Block) => {
       const Component = BLOCK_MAPPINGS[block.type];
       return (
         <div
           className={
-            highlightedBlock === block.id
+            currentBlock === block.id
               ? "ring ring-offset-8 ring-blue-500 rounded-md"
               : ""
           }
@@ -39,7 +40,7 @@ export function PagePreview({
         </div>
       );
     },
-    [highlightedBlock]
+    [currentBlock]
   );
 
   const memoizedBlocks = React.useMemo(

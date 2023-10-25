@@ -34,7 +34,6 @@ function FunnelSidebar({ funnel, page, onInspectBlock }: Props) {
             blocks={page.blocks}
             funnelName={funnel.name}
             funnelNumPages={funnel.pages.length}
-            onBlockChange={(blockId) => onInspectBlock?.(blockId)}
           />
         </section>
       )}

@@ -1,6 +1,5 @@
 
 import React, { createContext, useState, useCallback, useEffect, PropsWithChildren } from 'react';
-import ReactDOM from 'react-dom';
 import { Alert } from './Alert';
 
 type AlertContextType = {
