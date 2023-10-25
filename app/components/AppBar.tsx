@@ -1,16 +1,14 @@
 import React, { useEffect } from "react";
 
 import Image from "next/image";
+import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { ArrowUpTrayIcon } from "@heroicons/react/24/solid";
 
-import useFunnelStore from "@/store";
+import { useAlert } from "@/components/AlertProvider";
 import { FunnelProcessorErrors } from "@/services/funnel-processor";
+import useFunnelStore from "@/store";
 import { getErrorText } from "@/utils/error-texts";
-
-import { Alert } from "./Alert";
-import { useAlert } from "./AlertProvider";
-import Link from "next/link";
 
 type Props = {
   title?: string;
