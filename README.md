@@ -1,12 +1,6 @@
-# Work Sample proposal
+# Block funnel previewer
 
-This is my proposed solution for the work sample for Perspective.io's recruiting process, with the goal of building a funnel preview tool for web platforms.
-
-More details of the work sample on this [notion page](https://perspectiveco.notion.site/Work-Sample-Senior-Frontend-Engineer-Andr-s-Felipe-Osorio-1ee56ab4ce7547e2bc4e136a99b152d6).
-
-## Remote version
-
-A working version of this project is available at Vercel: [aosorio-perspective-test.vercel.app/(https://aosorio-perspective-test.vercel.app/).
+This is a funnel preview tool for web platforms.
 
 ## My Approach
 
@@ -20,8 +14,6 @@ I decided to solve this example by making sure the main acceptance criteria were
     - [x] an external navigation
   - [x] select another funnel JSON file without having to reload the page.
 
-More details on the [work sample page](https://perspectiveco.notion.site/Work-Sample-Senior-Frontend-Engineer-Andr-s-Felipe-Osorio-1ee56ab4ce7547e2bc4e136a99b152d6).
-
 ### Solution design
 
 Afterwards, I designed the overall look I wanted the tool to have on Figma. From the criteria, I decided the tool should:
@@ -29,10 +21,6 @@ Afterwards, I designed the overall look I wanted the tool to have on Figma. From
 - Have a friendly user interface that only suggests the user to focus on one thing at a time.
 - Additional information, such as the code and the funnel specs, are presented as auxiliary content.
 - When possible, users shouldn't have to deal with the funnel code directly, so they should be able to inspect details of each page and block individually.
-
-The initial design can be seen on the image below.
-
-![Initial design](/public/inspector-initial-design.png)
 
 After having the basic concept, I iterated over it in real time using the application (designing in the browser). The main feature I introduced after this first step was to make 2 views:
 
@@ -75,8 +63,6 @@ You can upload a valid JSON funnel file to the inspector by dragging and droppin
 - Extract funnel and page data from it.
 - Navigate to the inspection page, where you can inspect your funnel's block by page or see the full code.
 - Highlight a specific block from the funnel and inspect its properties
-
-[inspector-recording.webm](https://github.com/androide-osorio/perspective-test/assets/1386527/18aeba2f-dfc4-4dbd-8e0b-48b18267bce1)
 
 ## Improvement opportunities
 

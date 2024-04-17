@@ -33,8 +33,8 @@ export default function UploadFunnelPage() {
     <>
       <header className="flex flex-col gap-3 items-center">
         <Image
-          src="/perspective-logo.png"
-          alt="Perspective"
+          src="/sales-funnel.png"
+          alt="Funnel"
           width={56}
           height={56}
         />

@@ -42,8 +42,8 @@ export function AppBar({ title }: Props) {
     <header className="shadow-lg flex gap-4 justify-between items-center bg-white dark:bg-slate-800 px-6 py-4 sticky z-10 border-b-gray-100 dark:border-b-slate-600 border-b">
       <Link href="/">
         <Image
-          src="/perspective-logo.png"
-          alt="Perspective.io"
+          src="/sales-funnel.png"
+          alt="funnel preview"
           width={32}
           height={32}
         />
