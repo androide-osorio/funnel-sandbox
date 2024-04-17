@@ -6,7 +6,7 @@ This is a funnel preview tool for web platforms.
 
 ### Functional requirements
 
-I decided to solve this example by making sure the main acceptance criteria were met, which are:
+For the basic functionality of a previewer, I wanted to meet the following criteria:
 
 - [x] As a user, I want to be able to:
   - [x] Upload a funnel JSON file from local computer and generate a mobile preview of the funnel.
@@ -16,15 +16,15 @@ I decided to solve this example by making sure the main acceptance criteria were
 
 ### Solution design
 
-Afterwards, I designed the overall look I wanted the tool to have on Figma. From the criteria, I decided the tool should:
+Afterward, I designed the overall look I wanted the tool to have on Figma. From the criteria, I decided the tool should:
 
 - Have a friendly user interface that only suggests the user to focus on one thing at a time.
 - Additional information, such as the code and the funnel specs, are presented as auxiliary content.
-- When possible, users shouldn't have to deal with the funnel code directly, so they should be able to inspect details of each page and block individually.
+- When possible, users shouldn't have to deal with the funnel code directly, so they should be able to inspect the details of each page and block individually.
 
-After having the basic concept, I iterated over it in real time using the application (designing in the browser). The main feature I introduced after this first step was to make 2 views:
+After having the basic concept, I iterated over it in real-time using the application (designing in the browser). The main feature I introduced after this first step was to make 2 views:
 
-- The code view would show the funnel's uploade source code, for power or tech-savvy users
+- The code view would show the funnel's uploaded source code, for power or tech-savvy users
 - An inspector view for regular users, where each property and block can be inspected at a glance.
 
 ### Solution Architecture
@@ -47,7 +47,7 @@ The overall state shape for the application is similar to the following:
 }
 ```
 
-The state of the inspector is controlled entirely by the app's URL, so each part of the funnel can be accessed and shared directly. The URLS available are:
+The app's URL controls the inspector's state, so each funnel part can be accessed and shared directly. The URLS available are:
 
 | URL                                 | Section   | Description                                         |
 | ----------------------------------- | --------- | --------------------------------------------------- |
@@ -57,7 +57,7 @@ The state of the inspector is controlled entirely by the app's URL, so each part
 
 ### Results
 
-You can upload a valid JSON funnel file to the inspector by dragging and dropping or navigating through your file system. The inspector will:
+You can upload a valid JSON funnel file to the inspector by dragging-and-dropping or navigating through your file system. The inspector will:
 
 - Parse the JSON file
 - Extract funnel and page data from it.
@@ -70,7 +70,7 @@ The following are some of the aspects that I have left pending due to time const
 
 ### Migrate to a full-stack application
 
-This NextJS app uses mostly client components, and stores funnel data on the browser's local storage, which is flaky and insecure. To have better security and a better experience, funnels should be uploaded and stored in some kind of server.
+This NextJS app uses mostly client components, and stores funnel data on the browser's local storage, which is flaky and insecure. To have better security and a better experience, funnels should be uploaded and stored on some kind of server.
 
 ### Funnel file validation
 
