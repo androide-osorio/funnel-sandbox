@@ -1,5 +1,6 @@
+import { useMemo } from "react";
 import Image from "next/image";
-import { ListBlock, ListItem as ListItemBlockType } from "@/types";
+import { type ListBlock, type ListItem as ListItemBlockType } from "@/types";
 
 type ListProps = Omit<ListBlock, "type">;
 
@@ -26,9 +27,24 @@ export function ListItemBlock({ src, title, description }: ListItemProps) {
   );
 }
 
-export function ListBlock({ id, items }: ListProps) {
+export function ListBlock({ id, items, layout = 'grid' }: ListProps) {
+  const gridLayout = "grid grid-cols-2 gap-3"
+  const vstackLayout = "flex flex-col gap-3"
+  const hstackLayout = "flex gap-3"
+
+  const listLayoutClasses = useMemo(() => {
+    switch (layout) {
+      case "vstack":
+        return vstackLayout;
+      case "hstack":
+        return hstackLayout;
+      default:
+        return gridLayout;
+    }
+  }, [layout]);
+
   return (
-    <ul className="grid grid-cols-2 gap-3">
+    <ul className={listLayoutClasses}>
       {items.map((item, i) => (
         <ListItemBlock key={`${id}-item-${i}`} {...item} />
       ))}

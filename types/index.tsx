@@ -27,6 +27,7 @@ export type ImageBlock = GenericBlock & {
 
 export type ListBlock = GenericBlock & {
   type: "list";
+  layout?: "vstack" | "hstack" | "grid";
   items: ListItem[];
 };
 
