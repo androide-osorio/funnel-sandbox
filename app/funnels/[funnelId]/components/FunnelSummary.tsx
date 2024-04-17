@@ -4,7 +4,7 @@ import { Bars3BottomLeftIcon } from "@heroicons/react/24/solid";
 import { ListBulletIcon } from "@heroicons/react/24/solid";
 import { CursorArrowRippleIcon } from "@heroicons/react/24/solid";
 
-import { Block } from "@/types";
+import { Block } from "@/blocks";
 import {
   PropertyList,
   CodeEditor,

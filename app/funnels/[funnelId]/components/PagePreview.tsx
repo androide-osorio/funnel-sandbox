@@ -1,5 +1,6 @@
 import React, { useCallback } from "react";
-import { Block, Page } from "@/types";
+import { Block } from "@/blocks";
+import { Page } from "@/types";
 import {
   ButtonBlock,
   ImageBlock,
