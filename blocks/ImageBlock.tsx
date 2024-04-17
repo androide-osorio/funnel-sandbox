@@ -1,4 +1,9 @@
-import { type ImageBlock } from "@/types";
+import { type GenericBlock } from "./types";
+
+export type ImageBlock = GenericBlock & {
+  type: "image";
+  src: string;
+};
 
 type Props = Omit<ImageBlock, "type"> & {
   alt: string;

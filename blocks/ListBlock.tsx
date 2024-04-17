@@ -1,10 +1,21 @@
 import { useMemo } from "react";
 import Image from "next/image";
-import { type ListBlock, type ListItem as ListItemBlockType } from "@/types";
+import { type GenericBlock } from "./types";
+
+export type ListItem = {
+  title: string;
+  description?: string;
+  src?: string;
+};
+
+export type ListBlock = GenericBlock & {
+  type: "list";
+  layout?: "vstack" | "hstack" | "grid";
+  items: ListItem[];
+};
 
 type ListProps = Omit<ListBlock, "type">;
-
-type ListItemProps = ListItemBlockType;
+type ListItemProps = ListItem;
 
 export function ListItemBlock({ src, title, description }: ListItemProps) {
   return (

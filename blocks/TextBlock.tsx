@@ -1,4 +1,11 @@
-import { type TextBlock } from "@/types";
+import { type GenericBlock, type Alignments } from "./types";
+
+export type TextBlock = GenericBlock & {
+  type: "text";
+  text: string;
+  color?: string;
+  align?: Alignments;
+};
 
 type Props = Omit<TextBlock, "type">;
 

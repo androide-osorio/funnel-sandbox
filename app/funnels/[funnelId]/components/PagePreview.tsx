@@ -5,7 +5,7 @@ import {
   ImageBlock,
   ListBlock,
   TextBlock,
-} from "@/components/blocks";
+} from "@/blocks";
 import { useHighlightBlock } from "@/app/components/HighlightBlockProvider";
 
 type Props = Page & {
