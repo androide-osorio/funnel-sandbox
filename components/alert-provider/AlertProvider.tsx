@@ -5,7 +5,7 @@ import React, {
   useEffect,
   PropsWithChildren,
 } from "react";
-import { Alert } from "./Alert";
+import { Alert } from "../alert/Alert";
 
 type AlertContextType = {
   showAlert: (params: { message: string; title?: string }) => void;

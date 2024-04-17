@@ -1,6 +1,6 @@
 "use client";
 
-import { AlertProvider } from "@/components/AlertProvider";
+import { AlertProvider } from "@/components/alert-provider/AlertProvider";
 import { AppBar } from "../components/AppBar";
 
 import { useFunnelFromUrl } from "../hooks/use-funnel-from-url";

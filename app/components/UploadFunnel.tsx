@@ -4,8 +4,8 @@ import Image from "next/image";
 import { useRouter } from "next/navigation";
 
 import { useFunnelStore } from "@/store";
-import { FileLoader } from "@/components/FileLoader";
-import { useAlert } from "@/components/AlertProvider";
+import { FileLoader } from "@/components";
+import { useAlert } from "@/components/alert-provider/AlertProvider";
 
 import { FunnelProcessorErrors } from "../../services/funnel-processor";
 import { getErrorText } from "../../utils/error-texts";

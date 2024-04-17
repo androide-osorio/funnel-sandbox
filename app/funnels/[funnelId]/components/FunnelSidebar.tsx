@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 
-import { CodeEditor } from "@/components/CodeEditor";
-import { Tab, Tabs } from "@/components/Tabs";
+import { CodeEditor, Tab, Tabs } from "@/components";
 import { Funnel, Page } from "@/types";
 
 import FunnelSummary from "./FunnelSummary";

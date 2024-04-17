@@ -1,6 +1,6 @@
 "use client";
 
-import { AlertProvider } from "@/components/AlertProvider";
+import { AlertProvider } from "@/components";
 import UploadFunnelPage from "./components/UploadFunnel";
 
 export default function HomePage() {

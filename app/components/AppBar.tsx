@@ -5,7 +5,7 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { ArrowUpTrayIcon } from "@heroicons/react/24/solid";
 
-import { useAlert } from "@/components/AlertProvider";
+import { useAlert } from "@/components/alert-provider/AlertProvider";
 import { FunnelProcessorErrors } from "@/services/funnel-processor";
 import useFunnelStore from "@/store";
 import { getErrorText } from "@/utils/error-texts";
