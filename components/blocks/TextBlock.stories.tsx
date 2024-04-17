@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react';
 import { TextBlock } from './TextBlock';
 
 const meta = {
-	title: 'Blocks/TextBlock',
+	title: 'Blocks/Text',
 	component: TextBlock,
 	tags: ['autodocs'],
 } satisfies Meta<typeof TextBlock>;
@@ -17,6 +17,9 @@ export const Primary: Story = {
 	},
 };
 
+/**
+ * You can change the text color with the `color` prop.
+ */
 export const CustomColor: Story = {
 	args: {
 		...Primary.args,
@@ -24,6 +27,9 @@ export const CustomColor: Story = {
 	},
 };
 
+/**
+ * You can change the text alignment with the `align` prop, supporting `left`, `center` and `right` alignments.
+ */
 export const CustomAlignment: Story = {
 	args: {
 		...Primary.args,

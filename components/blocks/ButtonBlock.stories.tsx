@@ -18,7 +18,9 @@ const meta = {
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-// More on writing stories with args: https://storybook.js.org/docs/writing-stories/args
+/**
+ * The button has a blue background by default, and an distinct ID is required.
+ */
 export const Primary: Story = {
 	args: {
 		id: 'button-1',
@@ -26,6 +28,9 @@ export const Primary: Story = {
 	},
 };
 
+/**
+ * You can change button's background color with the `bgColor` prop.
+ */
 export const CustomBgColor: Story = {
 	args: {
 		...Primary.args,
@@ -33,6 +38,9 @@ export const CustomBgColor: Story = {
 	},
 };
 
+/**
+ * You can change button's text color with the `color` prop.
+ */
 export const TextColor: Story = {
 	args: {
 		...Primary.args,

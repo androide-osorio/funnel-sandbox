@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react';
 import { ListBlock } from './ListBlock';
 
 const meta = {
-	title: 'Blocks/ListBlock',
+	title: 'Blocks/List',
 	component: ListBlock,
 	parameters: {
 		layout: 'centered',
@@ -31,6 +31,9 @@ export const Primary: Story = {
 	},
 };
 
+/**
+ * List blocks can have a horizontal layout by setting the `layout` prop to `hstack`.
+ */
 export const VStack: Story = {
 	args: {
 		...Primary.args,
@@ -39,6 +42,9 @@ export const VStack: Story = {
 	name: 'Vertical Stack',
 };
 
+/**
+ * List blocks can have a vertical (column) layout by setting the `layout` prop to `hstack`.
+ */
 export const HStack: Story = {
 	args: {
 		...Primary.args,
@@ -47,6 +53,9 @@ export const HStack: Story = {
 	name: 'Horizontal Stack',
 };
 
+/**
+ * List support a 2-column grid by default with the `layout` prop set to `grid`.
+ */
 export const Grid: Story = {
 	args: {
 		...Primary.args,

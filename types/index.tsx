@@ -14,9 +14,23 @@ export type TextBlock = GenericBlock & {
 };
 
 export type ButtonBlock = GenericBlock & {
+  /**
+   * The block's type
+   */
   type: "button";
+  /**
+   * The button's text
+   */
   text: string;
+  /**
+   * The button's color
+   * @default "white"
+   */
   color?: string;
+  /**
+   * The button's background color
+   * @default "blue-700"
+   */
   bgColor?: string;
 };
 

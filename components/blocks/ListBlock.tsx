@@ -27,6 +27,9 @@ export function ListItemBlock({ src, title, description }: ListItemProps) {
   );
 }
 
+/**
+ * The list block renders a list of items that can showcase an arbitrary image, a title and a description, and supports multiple layouts. Use them primarily with icons.
+ */
 export function ListBlock({ id, items, layout = 'grid' }: ListProps) {
   const gridLayout = "grid grid-cols-2 gap-3"
   const vstackLayout = "flex flex-col gap-3"
