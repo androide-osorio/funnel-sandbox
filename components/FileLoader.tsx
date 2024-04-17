@@ -7,6 +7,9 @@ type Props = {
   accept?: string;
 };
 
+/**
+ * The FileLoader component allows users to upload files by dragging and dropping them onto the component.
+ */
 export function FileLoader({ onFileUpload, accept }: Props) {
   const onDrop = useCallback(
     (acceptedFiles: File[]) => {

@@ -10,6 +10,9 @@ type Props = {
   data: PropertyDescription[];
 };
 
+/**
+ * The property list component displays a list of key-value pairs with defined types.
+ */
 export function PropertyList({ data }: Props) {
   const id = useId();
   return (

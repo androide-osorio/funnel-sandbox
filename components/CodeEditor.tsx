@@ -12,6 +12,9 @@ interface CodeEditorProps {
   onChange?: (newCode: string) => void;
 }
 
+/**
+ * The CodeEditor component allows users to view and edit code in a text editor with syntax highlighting support and line numbers.
+ */
 export function CodeEditor({
   code,
   language,

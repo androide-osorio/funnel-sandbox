@@ -1,22 +1,24 @@
-import React from "react";
+import React, { PropsWithChildren } from "react";
 import { useState } from "react";
 
-type TabProps = {
+export type TabProps = {
   value: string;
   children: React.ReactNode;
 };
 
-type TabsProps = {
-  children: React.ReactNode;
+type TabsProps = PropsWithChildren<{
   initialValue?: string;
   variant?: "horizontal" | "vertical";
   onChange: (newTab: string) => void;
-};
+}>;
 
 export function Tab({ children }: TabProps) {
   return <>{children}</>;
 }
 
+/**
+ * The Tabs component allows users to switch between different sections of content.
+ */
 export const Tabs = ({
   variant,
   initialValue,

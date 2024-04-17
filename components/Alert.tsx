@@ -3,6 +3,9 @@ type Props = {
   text: string;
 };
 
+/**
+ * The alert component displays an error message to the user.
+ */
 export function Alert({ title, text }: Props) {
   return (
     <section
